@@ -148,9 +148,12 @@ namespace Reflex.Core
 
     public void RegisterValue(object value, Type[] contracts)
     {
-      var resolver = new SingletonValueResolver(value);
-      resolver.DeclaringContainer = this;
-      Disposables.Add(resolver);
+      var tempBuilder = new ContainerBuilder();
+      tempBuilder.RegisterValue(value, contracts);
+
+      var binding = tempBuilder.Bindings[0];
+      binding.Resolver.DeclaringContainer = this;
+      Disposables.Add(binding.Resolver);
 
       foreach (var contract in contracts)
       {
@@ -159,7 +162,7 @@ namespace Reflex.Core
           resolvers = new List<IResolver>();
           ResolversByContract.Add(contract, resolvers);
         }
-        resolvers.Add(resolver);
+        resolvers.Add(binding.Resolver);
       }
     }
 
