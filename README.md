@@ -36,7 +36,7 @@ On top of that, Zenjex solves a real Reflex limitation: **you can now add bindin
 
 ```
 src/
-├── Reflex/              ← Reflex 14.1.0 (unchanged)
+├── Reflex/              ← Reflex 14.1.0 + modifications to container script.
 └── ReflexExtensions/    ← Zenjex extension layer
     ├── BindingBuilder.cs              ← Fluent API for ContainerBuilder (setup phase)
     ├── ContainerBindingBuilder.cs     ← Fluent API for Container (post-build registration)
@@ -221,7 +221,7 @@ Zenject высоко ценится среди сообщества Unity-раз
 
 ```
 src/
-├── Reflex/              ← Reflex 14.1.0 (не изменён)
+├── Reflex/              ← Reflex 14.1.0 + модифицированный Container.cs
 └── ReflexExtensions/    ← расширения Zenjex
     ├── BindingBuilder.cs              ← Fluent API для ContainerBuilder (фаза сборки)
     ├── ContainerBindingBuilder.cs     ← Fluent API для уже собранного Container
