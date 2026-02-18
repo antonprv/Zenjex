@@ -1,0 +1,23 @@
+// Created by Anton Piruev in 2026. 
+// Any direct commercial use of derivative work is strictly prohibited.
+
+using Reflex.Core;
+using Reflex.Injectors;
+using System;
+using UnityEngine.SceneManagement;
+
+namespace Reflex.Extensions
+{
+  public static class SceneExtensions
+  {
+    public static Container GetSceneContainer(this Scene scene)
+    {
+      if (UnityInjector.ContainersPerScene.TryGetValue(scene, out var sceneContainer))
+      {
+        return sceneContainer;
+      }
+
+      throw new Exception($"Scene '{scene.name}' does not have a container, make sure it has a SceneScope component");
+    }
+  }
+}

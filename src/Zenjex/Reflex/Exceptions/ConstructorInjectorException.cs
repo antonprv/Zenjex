@@ -1,0 +1,23 @@
+// Created by Anton Piruev in 2026. 
+// Any direct commercial use of derivative work is strictly prohibited.
+
+using Reflex.Caching;
+using Reflex.Extensions;
+using System;
+using System.Linq;
+
+namespace Reflex.Exceptions
+{
+  internal sealed class ConstructorInjectorException : Exception
+  {
+    public ConstructorInjectorException(Type type, Exception exception, MemberParamInfo[] constructorParameters) : base(BuildMessage(type, exception, constructorParameters))
+    {
+    }
+
+    private static string BuildMessage(Type type, Exception exception, MemberParamInfo[] constructorParameters)
+    {
+      var constructorSignature = $"{type.Name} ({string.Join(", ", constructorParameters.Select(t => t.ParameterType.Name))})";
+      return $"{exception.Message} occurred while instantiating object type '{type.GetFullName()}' using constructor {constructorSignature}";
+    }
+  }
+}
