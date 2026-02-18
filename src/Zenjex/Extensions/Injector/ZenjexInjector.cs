@@ -57,6 +57,14 @@ namespace Code.Zenjex.Extensions.Injector
       }
     }
 
+    // ── Public helpers ────────────────────────────────────────────────────────
+
+    /// <summary>
+    /// Returns true if the type has any [Zenjex]-marked members.
+    /// Used by ZenjexRunner to skip unrelated MonoBehaviours cheaply.
+    /// </summary>
+    public static bool HasZenjexMembers(Type type) => GetInfo(type).HasAnyMembers;
+
     // ── Cache ─────────────────────────────────────────────────────────────────
 
     private static TypeZenjexInfo GetInfo(Type type)

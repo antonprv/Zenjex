@@ -8,8 +8,7 @@ namespace Code.Zenjex.Extensions.Attribute
 {
   /// <summary>
   /// Drop-in replacement for [Inject].
-  /// Supports fields, properties, and Construct-methods.
-  /// No base class required — injection is handled automatically by ZenjexPatcher.
+  /// Supports fields, properties, and Construct-methods on classes that inherit ZenjexBehaviour.
   /// </summary>
   [MeansImplicitUse(ImplicitUseKindFlags.Assign)]
   [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Method)]
