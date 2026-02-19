@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Code.Zenjex.Extensions.Core
+namespace Zenjex.Extensions.Core
 {
   [DefaultExecutionOrder(-280)]
   public abstract class ProjectRootInstaller : MonoBehaviour, IInstaller

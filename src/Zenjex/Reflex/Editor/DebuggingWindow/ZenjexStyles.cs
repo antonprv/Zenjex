@@ -2,6 +2,7 @@
 // Any direct commercial use of derivative work is strictly prohibited.
 
 using UnityEditor;
+
 using UnityEngine;
 
 namespace Reflex.Editor.DebuggingWindow
@@ -17,19 +18,19 @@ namespace Reflex.Editor.DebuggingWindow
     private static GUIStyle _rowEven;
     public static GUIStyle RowEven
     {
-      get { return _rowEven ??= new GUIStyle("CN EntryBackEven") { border = new RectOffset(0,0,0,0) }; }
+      get { return _rowEven ??= new GUIStyle("CN EntryBackEven") { border = new RectOffset(0, 0, 0, 0) }; }
     }
 
     private static GUIStyle _rowOdd;
     public static GUIStyle RowOdd
     {
-      get { return _rowOdd ??= new GUIStyle("CN EntryBackOdd") { border = new RectOffset(0,0,0,0) }; }
+      get { return _rowOdd ??= new GUIStyle("CN EntryBackOdd") { border = new RectOffset(0, 0, 0, 0) }; }
     }
 
     private static GUIStyle _rowSelected;
     public static GUIStyle RowSelected
     {
-      get { return _rowSelected ??= new GUIStyle("MeTransitionSelectHead") { border = new RectOffset(0,0,0,0) }; }
+      get { return _rowSelected ??= new GUIStyle("MeTransitionSelectHead") { border = new RectOffset(0, 0, 0, 0) }; }
     }
 
     private static GUIStyle _statusGreen;
@@ -40,7 +41,7 @@ namespace Reflex.Editor.DebuggingWindow
         return _statusGreen ??= new GUIStyle(EditorStyles.miniLabel)
         {
           fontStyle = FontStyle.Bold,
-          normal    = { textColor = new Color(0.3f, 0.9f, 0.4f) }
+          normal = { textColor = new Color(0.3f, 0.9f, 0.4f) }
         };
       }
     }
@@ -53,7 +54,7 @@ namespace Reflex.Editor.DebuggingWindow
         return _statusGray ??= new GUIStyle(EditorStyles.miniLabel)
         {
           fontStyle = FontStyle.Bold,
-          normal    = { textColor = new Color(0.5f, 0.5f, 0.5f) }
+          normal = { textColor = new Color(0.5f, 0.5f, 0.5f) }
         };
       }
     }
@@ -71,6 +72,6 @@ namespace Reflex.Editor.DebuggingWindow
     }
 
     public static readonly Color NormalColor = new Color(0.85f, 0.85f, 0.85f);
-    public static readonly Color LateColor   = new Color(1.0f,  0.65f, 0.2f);
+    public static readonly Color LateColor = new Color(1.0f, 0.65f, 0.2f);
   }
 }

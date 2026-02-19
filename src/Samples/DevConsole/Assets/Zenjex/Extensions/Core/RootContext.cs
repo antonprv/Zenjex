@@ -1,7 +1,7 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-namespace Code.Zenjex.Extensions.Core
+namespace Zenjex.Extensions.Core
 {
   public static class RootContext
   {

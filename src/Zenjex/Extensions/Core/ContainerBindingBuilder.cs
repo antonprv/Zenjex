@@ -1,11 +1,12 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Core;
 using System;
 using System.Linq;
 
-namespace Code.Zenjex.Extensions.Core
+using Reflex.Core;
+
+namespace Zenjex.Extensions.Core
 {
   public sealed class ContainerBindingBuilder<T>
   {

@@ -1,11 +1,12 @@
 // Created by Anton Piruev in 2026.
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Code.Zenjex.Extensions.Core;
-using Code.Zenjex.Extensions.Runner;
 using UnityEngine;
 
-namespace Code.Zenjex.Extensions.Injector
+using Zenjex.Extensions.Core;
+using Zenjex.Extensions.Runner;
+
+namespace Zenjex.Extensions.Injector
 {
   /// <summary>
   /// Optional base class for MonoBehaviours that use [Zenjex] injection.

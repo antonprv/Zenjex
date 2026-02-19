@@ -1,15 +1,16 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using Reflex.Exceptions;
 using Reflex.Extensions;
 using Reflex.Generics;
 using Reflex.Injectors;
 using Reflex.Logging;
 using Reflex.Resolvers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Reflex.Core
 {

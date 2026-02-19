@@ -6,7 +6,7 @@ using Reflex.Enums;
 using System;
 using System.Linq;
 
-namespace Code.Zenjex.Extensions.Core
+namespace Zenjex.Extensions.Core
 {
   public sealed class BindingBuilder<T>
   {

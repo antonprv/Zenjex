@@ -3,7 +3,7 @@
     "rootNamespace": "",
     "references": [
         "GUID:1530a967b84cfb44dbdd5e8a1989764f",
-        "Zenjex.Extensions"
+        "GUID:6dd67465ef3455b4b846fd6c6d57f8bb"
     ],
     "includePlatforms": [
         "Editor"

@@ -1,10 +1,11 @@
 // Created by Anton Piruev in 2026.
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using JetBrains.Annotations;
 using System;
 
-namespace Code.Zenjex.Extensions.Attribute
+using JetBrains.Annotations;
+
+namespace Zenjex.Extensions.Attribute
 {
   /// <summary>
   /// Drop-in replacement for [Inject].

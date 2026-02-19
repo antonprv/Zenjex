@@ -17,13 +17,13 @@ namespace Reflex.Editor.DebuggingWindow
 
   internal sealed class ReflexNode
   {
-    public string         Label;        // rich-text display name
-    public string[]       Contracts;    // shown as badges in Hierarchy column
-    public string         Lifetime;
-    public string         ResolverKind;
-    public Func<string>   Resolutions;  // live counter — only set for resolvers
+    public string Label;        // rich-text display name
+    public string[] Contracts;    // shown as badges in Hierarchy column
+    public string Lifetime;
+    public string ResolverKind;
+    public Func<string> Resolutions;  // live counter — only set for resolvers
     public List<CallSite> Callsite;
-    public Texture        Icon;
+    public Texture Icon;
   }
 
   // ── TreeView<int> ────────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@ namespace Reflex.Editor.DebuggingWindow
 
   internal sealed class ReflexTreeView : TreeView<int>
   {
-    private const float RowH    = 20f;
+    private const float RowH = 20f;
     private const float ToggleW = 18f;
 
     private enum Col { Hierarchy, Kind, Lifetime, Calls }
@@ -49,12 +49,12 @@ namespace Reflex.Editor.DebuggingWindow
     public ReflexTreeView(TreeViewState<int> state, MultiColumnHeader header)
       : base(state, header)
     {
-      rowHeight                    = RowH;
-      columnIndexForTreeFoldouts   = 0;
+      rowHeight = RowH;
+      columnIndexForTreeFoldouts = 0;
       showAlternatingRowBackgrounds = true;
-      showBorder                   = true;
-      customFoldoutYOffset         = (RowH - EditorGUIUtility.singleLineHeight) * 0.5f;
-      extraSpaceBeforeIconAndLabel  = ToggleW;
+      showBorder = true;
+      customFoldoutYOffset = (RowH - EditorGUIUtility.singleLineHeight) * 0.5f;
+      extraSpaceBeforeIconAndLabel = ToggleW;
     }
 
     // ── Public API ────────────────────────────────────────────────────────────
@@ -63,7 +63,7 @@ namespace Reflex.Editor.DebuggingWindow
     public void SetData(TreeViewItem<int> root, Dictionary<int, ReflexNode> nodes)
     {
       _pendingRoot = root;
-      _nodes       = nodes;
+      _nodes = nodes;
       Reload();   // triggers BuildRoot → BuildRows
       ExpandAll();
     }
@@ -157,8 +157,11 @@ namespace Reflex.Editor.DebuggingWindow
       rect.y += 1;
       var style = new GUIStyle("CN CountBadge")
       {
-        wordWrap     = false, stretchWidth  = false, stretchHeight = false,
-        fontStyle    = FontStyle.Bold, fontSize = 11
+        wordWrap = false,
+        stretchWidth = false,
+        stretchHeight = false,
+        fontStyle = FontStyle.Bold,
+        fontSize = 11
       };
 
       GUI.BeginGroup(rect);
@@ -166,7 +169,7 @@ namespace Reflex.Editor.DebuggingWindow
       foreach (var contract in contracts)
       {
         var content = new GUIContent(contract);
-        var w       = style.CalcSize(content).x;
+        var w = style.CalcSize(content).x;
         GUI.Label(new Rect(xOff, 0, w, rect.height), content, style);
         xOff += w + 4;
         if (xOff > rect.width) break;
@@ -209,7 +212,7 @@ namespace Reflex.Editor.DebuggingWindow
       var header = new MultiColumnHeader(new MultiColumnHeaderState(columns))
       {
         canSort = false,
-        height  = MultiColumnHeader.DefaultGUI.minimumHeight
+        height = MultiColumnHeader.DefaultGUI.minimumHeight
       };
       header.ResizeToFit();
       return header;
@@ -222,13 +225,13 @@ namespace Reflex.Editor.DebuggingWindow
   internal static class ReflexTreeViewBuilder
   {
     private const string ContainerIcon = "PreMatCylinder";
-    private const string ResolverIcon  = "d_NetworkAnimator Icon";
-    private const string InstanceIcon  = "d_Prefab Icon";
+    private const string ResolverIcon = "d_NetworkAnimator Icon";
+    private const string InstanceIcon = "d_Prefab Icon";
 
     public static (TreeViewItem<int> root, Dictionary<int, ReflexNode> nodes) Build(
       bool showInternal, bool showInherited)
     {
-      var nodes  = new Dictionary<int, ReflexNode>();
+      var nodes = new Dictionary<int, ReflexNode>();
       var nextId = 1; // 0 reserved for hidden root
 
       var root = new TreeViewItem<int>(0, -1, "Root")
@@ -249,48 +252,48 @@ namespace Reflex.Editor.DebuggingWindow
       bool showInternal,
       bool showInherited)
     {
-      var id   = nextId++;
+      var id = nextId++;
       var item = new TreeViewItem<int>(id, -1, container.Name); // depth set by SetupDepths later
 
       nodes[id] = new ReflexNode
       {
-        Label    = container.Name,
-        Icon     = EditorGUIUtility.IconContent(ContainerIcon).image,
+        Label = container.Name,
+        Icon = EditorGUIUtility.IconContent(ContainerIcon).image,
         Callsite = container.GetDebugProperties().BuildCallsite,
       };
 
       foreach (var (resolver, contracts) in GetMatrix(container, showInternal, showInherited))
       {
-        var rId   = nextId++;
+        var rId = nextId++;
         var rItem = new TreeViewItem<int>(rId, -1, string.Join(", ", contracts.Select(x => x.GetName())));
         item.AddChild(rItem);
 
         nodes[rId] = new ReflexNode
         {
-          Label        = rItem.displayName,
-          Contracts    = contracts.Select(x => x.GetName()).OrderBy(x => x).ToArray(),
-          Lifetime     = resolver.Lifetime.ToString(),
+          Label = rItem.displayName,
+          Contracts = contracts.Select(x => x.GetName()).OrderBy(x => x).ToArray(),
+          Lifetime = resolver.Lifetime.ToString(),
           ResolverKind = resolver.GetType().Name
-            .Replace("Singleton","").Replace("Transient","")
-            .Replace("Scoped","").Replace("Resolver",""),
-          Resolutions  = () => resolver.GetDebugProperties().Resolutions.ToString(),
-          Icon         = EditorGUIUtility.IconContent(ResolverIcon).image,
-          Callsite     = resolver.GetDebugProperties().BindingCallsite,
+            .Replace("Singleton", "").Replace("Transient", "")
+            .Replace("Scoped", "").Replace("Resolver", ""),
+          Resolutions = () => resolver.GetDebugProperties().Resolutions.ToString(),
+          Icon = EditorGUIUtility.IconContent(ResolverIcon).image,
+          Callsite = resolver.GetDebugProperties().BindingCallsite,
         };
 
         foreach (var (instance, callsite) in resolver.GetDebugProperties().Instances
           .Where(t => t.Item1.IsAlive)
           .Select(t => (t.Item1.Target, t.Item2)))
         {
-          var iId   = nextId++;
+          var iId = nextId++;
           var label = $"{instance.GetType().GetName()} <color=#3D99ED>({SHA1.ShortHash(instance.GetHashCode())})</color>";
           var iItem = new TreeViewItem<int>(iId, -1, label);
           rItem.AddChild(iItem);
 
           nodes[iId] = new ReflexNode
           {
-            Label    = label,
-            Icon     = EditorGUIUtility.IconContent(InstanceIcon).image,
+            Label = label,
+            Icon = EditorGUIUtility.IconContent(InstanceIcon).image,
             Callsite = callsite,
           };
         }

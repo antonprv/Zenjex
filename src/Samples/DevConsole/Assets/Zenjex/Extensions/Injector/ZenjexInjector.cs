@@ -1,18 +1,20 @@
 // Created by Anton Piruev in 2026.
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Code.Zenjex.Extensions.Attribute;
-using Code.Zenjex.Extensions.Core;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+
 using UnityEngine;
 
-namespace Code.Zenjex.Extensions.Injector
+using Zenjex.Extensions.Attribute;
+using Zenjex.Extensions.Core;
+
+namespace Zenjex.Extensions.Injector
 {
   /// <summary>
   /// Core injection logic. Resolves all [Zenjex]-marked members on a given object
-  /// from RootContext. Called by ZenjexPatcher automatically before Awake.
+  /// from RootContext. Called by ZenjexRunner automatically before Awake.
   /// </summary>
   public static class ZenjexInjector
   {
@@ -33,13 +35,13 @@ namespace Code.Zenjex.Extensions.Injector
 
       foreach (var field in info.Fields)
       {
-        try   { field.SetValue(target, RootContext.Resolve(field.FieldType)); }
+        try { field.SetValue(target, RootContext.Resolve(field.FieldType)); }
         catch (Exception ex) { LogError(target, $"field '{field.Name}' ({field.FieldType.Name})", ex); }
       }
 
       foreach (var prop in info.Properties)
       {
-        try   { prop.SetValue(target, RootContext.Resolve(prop.PropertyType)); }
+        try { prop.SetValue(target, RootContext.Resolve(prop.PropertyType)); }
         catch (Exception ex) { LogError(target, $"property '{prop.Name}' ({prop.PropertyType.Name})", ex); }
       }
 
@@ -79,9 +81,9 @@ namespace Code.Zenjex.Extensions.Injector
 
     private static TypeZenjexInfo BuildInfo(Type type)
     {
-      var fields   = new List<FieldInfo>();
-      var props    = new List<PropertyInfo>();
-      var methods  = new List<MethodInfo>();
+      var fields = new List<FieldInfo>();
+      var props = new List<PropertyInfo>();
+      var methods = new List<MethodInfo>();
 
       var t = type;
       while (t != null && t != typeof(object))
@@ -113,16 +115,16 @@ namespace Code.Zenjex.Extensions.Injector
 
     private sealed class TypeZenjexInfo
     {
-      public readonly FieldInfo[]    Fields;
+      public readonly FieldInfo[] Fields;
       public readonly PropertyInfo[] Properties;
-      public readonly MethodInfo[]   Methods;
-      public readonly bool           HasAnyMembers;
+      public readonly MethodInfo[] Methods;
+      public readonly bool HasAnyMembers;
 
       public TypeZenjexInfo(FieldInfo[] fields, PropertyInfo[] properties, MethodInfo[] methods)
       {
-        Fields        = fields;
-        Properties    = properties;
-        Methods       = methods;
+        Fields = fields;
+        Properties = properties;
+        Methods = methods;
         HasAnyMembers = fields.Length > 0 || properties.Length > 0 || methods.Length > 0;
       }
     }

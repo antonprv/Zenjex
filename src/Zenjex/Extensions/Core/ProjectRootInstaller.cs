@@ -1,12 +1,14 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Core;
 using System;
 using System.Collections;
+
+using Reflex.Core;
+
 using UnityEngine;
 
-namespace Code.Zenjex.Extensions.Core
+namespace Zenjex.Extensions.Core
 {
   [DefaultExecutionOrder(-280)]
   public abstract class ProjectRootInstaller : MonoBehaviour, IInstaller

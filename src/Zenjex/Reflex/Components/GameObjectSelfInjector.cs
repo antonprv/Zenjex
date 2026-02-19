@@ -1,10 +1,12 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
+using System;
+
 using Reflex.Core;
 using Reflex.Extensions;
 using Reflex.Injectors;
-using System;
+
 using UnityEngine;
 
 namespace Reflex.Components

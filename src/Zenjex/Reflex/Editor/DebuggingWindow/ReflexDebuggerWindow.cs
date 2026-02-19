@@ -1,15 +1,18 @@
 // Created by Anton Piruev in 2026.
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Code.Zenjex.Extensions.Runner;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+using Zenjex.Extensions.Runner;
 
 namespace Reflex.Editor.DebuggingWindow
 {
@@ -21,20 +24,20 @@ namespace Reflex.Editor.DebuggingWindow
 
     // ── Reflex tab ─────────────────────────────────────────────────────────────
     [SerializeField] private TreeViewState<int> _treeViewState;
-    private ReflexTreeView  _treeView;
-    private SearchField     _searchField;
-    private Vector2         _reflexStackScroll;
-    private Rect SearchBarRect  => new Rect(20f, 38f, position.width - 40f, 20f);
-    private Rect TreeViewRect   => new Rect(20f, 58f, position.width - 40f, position.height - 210f);
+    private ReflexTreeView _treeView;
+    private SearchField _searchField;
+    private Vector2 _reflexStackScroll;
+    private Rect SearchBarRect => new Rect(20f, 38f, position.width - 40f, 20f);
+    private Rect TreeViewRect => new Rect(20f, 58f, position.width - 40f, position.height - 210f);
 
     // ── Zenjex tab ─────────────────────────────────────────────────────────────
     private const float ZPanelW = 260f;
-    private const float ZRowH   = 20f;
+    private const float ZRowH = 20f;
     private Vector2 _zLeft, _zRight;
-    private int     _zSel     = -1;
-    private string  _zSearchL = "", _zSearchR = "";
+    private int _zSel = -1;
+    private string _zSearchL = "", _zSearchR = "";
     private List<ZenjexRunner.InjectedRecord> _zRecords = new();
-    private List<ZTypeMeta>                   _zTypes   = new();
+    private List<ZTypeMeta> _zTypes = new();
 
     // ── Menu ───────────────────────────────────────────────────────────────────
     //[MenuItem("Window/Analysis/Reflex Debugger %e")]
@@ -44,26 +47,26 @@ namespace Reflex.Editor.DebuggingWindow
     // ── Lifecycle ──────────────────────────────────────────────────────────────
     private void OnEnable()
     {
-      SceneManager.sceneLoaded               += OnSceneLoaded;
-      SceneManager.sceneUnloaded             += OnSceneUnloaded;
+      SceneManager.sceneLoaded += OnSceneLoaded;
+      SceneManager.sceneUnloaded += OnSceneUnloaded;
       EditorApplication.playModeStateChanged += OnPlayMode;
-      ZenjexRunner.OnStateChanged            += OnZenjexChanged;
+      ZenjexRunner.OnStateChanged += OnZenjexChanged;
       RefreshReflex();
       RefreshZenjex();
     }
 
     private void OnDisable()
     {
-      SceneManager.sceneLoaded               -= OnSceneLoaded;
-      SceneManager.sceneUnloaded             -= OnSceneUnloaded;
+      SceneManager.sceneLoaded -= OnSceneLoaded;
+      SceneManager.sceneUnloaded -= OnSceneUnloaded;
       EditorApplication.playModeStateChanged -= OnPlayMode;
-      ZenjexRunner.OnStateChanged            -= OnZenjexChanged;
+      ZenjexRunner.OnStateChanged -= OnZenjexChanged;
     }
 
-    private void OnSceneLoaded(Scene s, LoadSceneMode m)  => EditorApplication.delayCall += DelayRefresh;
-    private void OnSceneUnloaded(Scene s)                 => EditorApplication.delayCall += DelayRefresh;
-    private void OnPlayMode(PlayModeStateChange _)        => EditorApplication.delayCall += DelayRefresh;
-    private void OnZenjexChanged()                        => RefreshZenjex();
+    private void OnSceneLoaded(Scene s, LoadSceneMode m) => EditorApplication.delayCall += DelayRefresh;
+    private void OnSceneUnloaded(Scene s) => EditorApplication.delayCall += DelayRefresh;
+    private void OnPlayMode(PlayModeStateChange _) => EditorApplication.delayCall += DelayRefresh;
+    private void OnZenjexChanged() => RefreshZenjex();
 
     private void DelayRefresh()
     {
@@ -80,7 +83,7 @@ namespace Reflex.Editor.DebuggingWindow
       if (EditorGUI.EndChangeCheck()) Repaint();
 
       if (_activeTab == 0) DrawReflexTab();
-      else                 DrawZenjexTab();
+      else DrawZenjexTab();
     }
 
     // ══════════════════════════════════════════════════════════════════════════
@@ -92,7 +95,7 @@ namespace Reflex.Editor.DebuggingWindow
       if (_treeViewState == null) _treeViewState = new TreeViewState<int>();
 
       var header = ReflexTreeView.CreateHeader();
-      _treeView  = new ReflexTreeView(_treeViewState, header);
+      _treeView = new ReflexTreeView(_treeViewState, header);
 
       var (roots, nodes) = ReflexTreeViewBuilder.Build(
         ReflexEditorSettings.ShowInternalBindings,
@@ -162,7 +165,7 @@ namespace Reflex.Editor.DebuggingWindow
       {
         GUILayout.FlexibleSpace();
         EditorGUI.BeginChangeCheck();
-        ReflexEditorSettings.ShowInternalBindings  = GUILayout.Toggle(ReflexEditorSettings.ShowInternalBindings,  "Show Internal Bindings ");
+        ReflexEditorSettings.ShowInternalBindings = GUILayout.Toggle(ReflexEditorSettings.ShowInternalBindings, "Show Internal Bindings ");
         ReflexEditorSettings.ShowInheritedBindings = GUILayout.Toggle(ReflexEditorSettings.ShowInheritedBindings, "Show Inherited Bindings ");
         if (EditorGUI.EndChangeCheck()) RefreshReflex();
 
@@ -171,7 +174,7 @@ namespace Reflex.Editor.DebuggingWindow
         if (GUILayout.Button(refreshIcon, Styles.StatusBarIcon, GUILayout.Width(25)))
           RefreshReflex();
 
-        var isDebug   = UnityScriptingDefineSymbols.IsDefined("REFLEX_DEBUG");
+        var isDebug = UnityScriptingDefineSymbols.IsDefined("REFLEX_DEBUG");
         var debugIcon = EditorGUIUtility.IconContent(isDebug ? "d_DebuggerEnabled" : "d_DebuggerDisabled");
         debugIcon.tooltip = isDebug ? "Reflex Debugger Enabled" : "Reflex Debugger Disabled";
         if (GUILayout.Button(debugIcon, Styles.StatusBarIcon, GUILayout.Width(25)))
@@ -204,7 +207,7 @@ namespace Reflex.Editor.DebuggingWindow
       pos.y -= 3;
       Handles.color = Styles.Hyperlink.normal.textColor;
       Handles.DrawLine(
-        new Vector3(pos.xMin + EditorStyles.linkLabel.padding.left,  pos.yMax),
+        new Vector3(pos.xMin + EditorStyles.linkLabel.padding.left, pos.yMax),
         new Vector3(pos.xMax - EditorStyles.linkLabel.padding.right, pos.yMax));
       Handles.color = Color.white;
       EditorGUIUtility.AddCursorRect(pos, MouseCursor.Link);
@@ -218,8 +221,8 @@ namespace Reflex.Editor.DebuggingWindow
     private void RefreshZenjex()
     {
       _zRecords = new List<ZenjexRunner.InjectedRecord>(ZenjexRunner.InjectedRecords);
-      _zTypes   = BuildZTypeMeta();
-      _zSel     = -1;
+      _zTypes = BuildZTypeMeta();
+      _zSel = -1;
       Repaint();
     }
 
@@ -280,8 +283,8 @@ namespace Reflex.Editor.DebuggingWindow
                 EditorGUI.DrawRect(
                   new Rect(row.x + 4, row.y + (row.height - 10) * 0.5f, 10, 10),
                   ZPassColor(r.Pass));
-                var col  = r.IsLate ? ZenjexStyles.LateColor : ZenjexStyles.NormalColor;
-                var lbl  = $"<color=#{ColorUtility.ToHtmlStringRGB(col)}>{r.TypeName}</color>" +
+                var col = r.IsLate ? ZenjexStyles.LateColor : ZenjexStyles.NormalColor;
+                var lbl = $"<color=#{ColorUtility.ToHtmlStringRGB(col)}>{r.TypeName}</color>" +
                            $"  <color=#666666>{r.GoName}</color>";
                 ZenjexStyles.RichLabel.Draw(
                   new Rect(row.x + 18, row.y, row.width - 18, row.height),
@@ -300,7 +303,7 @@ namespace Reflex.Editor.DebuggingWindow
         using (new GUILayout.VerticalScope())
         {
           if (_zSel >= 0 && _zSel < _zRecords.Count) DrawZDetail(_zRecords[_zSel]);
-          else                                        DrawZTypeBrowser();
+          else DrawZTypeBrowser();
         }
       }
     }
@@ -312,17 +315,19 @@ namespace Reflex.Editor.DebuggingWindow
 
       _zRight = GUILayout.BeginScrollView(_zRight);
 
-      void Row(string l, string v) {
-        using (new GUILayout.HorizontalScope()) {
+      void Row(string l, string v)
+      {
+        using (new GUILayout.HorizontalScope())
+        {
           GUILayout.Label(l, EditorStyles.boldLabel, GUILayout.Width(56));
           GUILayout.Label(v, ZenjexStyles.RichLabel);
         }
       }
-      Row("Type",   r.TypeName);
+      Row("Type", r.TypeName);
       Row("Object", r.GoName);
-      Row("Scene",  r.SceneName);
-      Row("Pass",   ZPassLabel(r.Pass));
-      Row("Late",   r.IsLate ? "\u26a0 Yes \u2014 Awake() saw nulls" : "No");
+      Row("Scene", r.SceneName);
+      Row("Pass", ZPassLabel(r.Pass));
+      Row("Late", r.IsLate ? "\u26a0 Yes \u2014 Awake() saw nulls" : "No");
 
       GUILayout.Space(10);
       GUILayout.Label("[Zenjex] Members", EditorStyles.boldLabel);
@@ -377,22 +382,22 @@ namespace Reflex.Editor.DebuggingWindow
 
     private static string ZPassLabel(ZenjexRunner.InjectionPass p) => p switch
     {
-      ZenjexRunner.InjectionPass.ContainerReady  => "Pass 1 \u2014 Container Ready",
-      ZenjexRunner.InjectionPass.GameLaunched    => "Pass 2 \u2014 Game Launched",
-      ZenjexRunner.InjectionPass.SceneLoaded     => "Pass 3 \u2014 Scene Loaded (late)",
-      ZenjexRunner.InjectionPass.Manual          => "Manual \u2014 InjectGameObject()",
+      ZenjexRunner.InjectionPass.ContainerReady => "Pass 1 \u2014 Container Ready",
+      ZenjexRunner.InjectionPass.GameLaunched => "Pass 2 \u2014 Game Launched",
+      ZenjexRunner.InjectionPass.SceneLoaded => "Pass 3 \u2014 Scene Loaded (late)",
+      ZenjexRunner.InjectionPass.Manual => "Manual \u2014 InjectGameObject()",
       ZenjexRunner.InjectionPass.ZenjexBehaviour => "ZenjexBehaviour.Awake()",
-      _                                          => p.ToString()
+      _ => p.ToString()
     };
 
     private static Color ZPassColor(ZenjexRunner.InjectionPass p) => p switch
     {
-      ZenjexRunner.InjectionPass.ContainerReady  => new Color(0.3f, 0.85f, 0.4f),
-      ZenjexRunner.InjectionPass.GameLaunched    => new Color(0.3f, 0.6f,  0.9f),
-      ZenjexRunner.InjectionPass.SceneLoaded     => new Color(0.9f, 0.65f, 0.2f),
-      ZenjexRunner.InjectionPass.Manual          => new Color(0.8f, 0.5f,  0.9f),
-      ZenjexRunner.InjectionPass.ZenjexBehaviour => new Color(0.2f, 0.9f,  0.7f),
-      _                                          => Color.gray
+      ZenjexRunner.InjectionPass.ContainerReady => new Color(0.3f, 0.85f, 0.4f),
+      ZenjexRunner.InjectionPass.GameLaunched => new Color(0.3f, 0.6f, 0.9f),
+      ZenjexRunner.InjectionPass.SceneLoaded => new Color(0.9f, 0.65f, 0.2f),
+      ZenjexRunner.InjectionPass.Manual => new Color(0.8f, 0.5f, 0.9f),
+      ZenjexRunner.InjectionPass.ZenjexBehaviour => new Color(0.2f, 0.9f, 0.7f),
+      _ => Color.gray
     };
 
     // ── Zenjex type scanner ────────────────────────────────────────────────────
@@ -407,7 +412,7 @@ namespace Reflex.Editor.DebuggingWindow
       {
         if (IsSystemAsm(asm)) continue;
         Type[] types;
-        try   { types = asm.GetTypes(); }
+        try { types = asm.GetTypes(); }
         catch { continue; }
 
         foreach (var type in types)
@@ -417,13 +422,13 @@ namespace Reflex.Editor.DebuggingWindow
           for (var t = type; t != null && t != typeof(object); t = t.BaseType)
           {
             foreach (var f in t.GetFields(flags))
-              if (f.IsDefined(typeof(Code.Zenjex.Extensions.Attribute.ZenjexAttribute)))
+              if (f.IsDefined(typeof(Zenjex.Extensions.Attribute.ZenjexAttribute)))
                 members.Add(new ZMemberMeta(f.Name, f.FieldType.Name, "F"));
             foreach (var pp in t.GetProperties(flags))
-              if (pp.IsDefined(typeof(Code.Zenjex.Extensions.Attribute.ZenjexAttribute)))
+              if (pp.IsDefined(typeof(Zenjex.Extensions.Attribute.ZenjexAttribute)))
                 members.Add(new ZMemberMeta(pp.Name, pp.PropertyType.Name, "P"));
             foreach (var m in t.GetMethods(flags))
-              if (m.IsDefined(typeof(Code.Zenjex.Extensions.Attribute.ZenjexAttribute)))
+              if (m.IsDefined(typeof(Zenjex.Extensions.Attribute.ZenjexAttribute)))
                 members.Add(new ZMemberMeta(m.Name, "void", "M"));
           }
           if (members.Count > 0) result.Add(new ZTypeMeta(type.Name, asm.GetName().Name, members));
@@ -442,7 +447,7 @@ namespace Reflex.Editor.DebuggingWindow
              n.StartsWith("netstandard");
     }
 
-    private sealed class ZMemberMeta  { public readonly string Name, TypeName, Kind; public ZMemberMeta(string n, string t, string k) { Name=n; TypeName=t; Kind=k; } }
-    private sealed class ZTypeMeta    { public readonly string TypeName, AssemblyName; public readonly List<ZMemberMeta> Members; public ZTypeMeta(string t, string a, List<ZMemberMeta> m) { TypeName=t; AssemblyName=a; Members=m; } }
+    private sealed class ZMemberMeta { public readonly string Name, TypeName, Kind; public ZMemberMeta(string n, string t, string k) { Name = n; TypeName = t; Kind = k; } }
+    private sealed class ZTypeMeta { public readonly string TypeName, AssemblyName; public readonly List<ZMemberMeta> Members; public ZTypeMeta(string t, string a, List<ZMemberMeta> m) { TypeName = t; AssemblyName = a; Members = m; } }
   }
 }

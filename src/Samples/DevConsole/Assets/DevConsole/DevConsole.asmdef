@@ -1,0 +1,19 @@
+{
+    "name": "DevConsole",
+    "rootNamespace": "",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:1530a967b84cfb44dbdd5e8a1989764f",
+        "GUID:6dd67465ef3455b4b846fd6c6d57f8bb",
+        "GUID:0d3ac185cf6b6ad4c890ee69c33050ea"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

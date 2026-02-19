@@ -1,14 +1,16 @@
 // Created by Anton Piruev in 2026.
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Code.Zenjex.Extensions.Core;
-using Code.Zenjex.Extensions.Injector;
 using System;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Code.Zenjex.Extensions.Runner
+using Zenjex.Extensions.Core;
+using Zenjex.Extensions.Injector;
+
+namespace Zenjex.Extensions.Runner
 {
   /// <summary>
   /// Injects [Zenjex] members across all scenes in two passes, both driven by
@@ -35,19 +37,19 @@ namespace Code.Zenjex.Extensions.Runner
   {
     // ── Internal state ────────────────────────────────────────────────────────
 
-    private static readonly HashSet<int>                _injected = new();
-    private static bool                                 _launched;
+    private static readonly HashSet<int> _injected = new();
+    private static bool _launched;
 
     // ── Debug registry (read by ZenjexDebuggerWindow) ─────────────────────────
 
     /// <summary>Records of all injected objects, kept for the debugger window.</summary>
-    public static readonly List<InjectedRecord>       InjectedRecords = new();
+    public static readonly List<InjectedRecord> InjectedRecords = new();
 
     /// <summary>Fires whenever a new object is injected or the state is reset.</summary>
-    public static event Action                        OnStateChanged;
+    public static event Action OnStateChanged;
 
-    internal static bool                                IsLaunched    => _launched;
-    public static bool                                IsReady       => _launched;
+    internal static bool IsLaunched => _launched;
+    public static bool IsReady => _launched;
 
     // ── Bootstrap ─────────────────────────────────────────────────────────────
 
@@ -59,8 +61,8 @@ namespace Code.Zenjex.Extensions.Runner
       _launched = false;
 
       ProjectRootInstaller.OnContainerReady += OnContainerReady;
-      ProjectRootInstaller.OnGameLaunched   += OnGameLaunched;
-      SceneManager.sceneLoaded             += OnSceneLoaded;
+      ProjectRootInstaller.OnGameLaunched += OnGameLaunched;
+      SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     // ── Pass 1: inside ProjectRootInstaller.Awake() ───────────────────────────
@@ -99,8 +101,8 @@ namespace Code.Zenjex.Extensions.Runner
     private static void InjectScene(Scene scene, InjectionPass pass)
     {
       foreach (var root in scene.GetRootGameObjects())
-      foreach (var mb in root.GetComponentsInChildren<MonoBehaviour>(includeInactive: true))
-        TryInject(mb, pass, scene.name);
+        foreach (var mb in root.GetComponentsInChildren<MonoBehaviour>(includeInactive: true))
+          TryInject(mb, pass, scene.name);
     }
 
     // ── Per-object injection ──────────────────────────────────────────────────
@@ -123,11 +125,11 @@ namespace Code.Zenjex.Extensions.Runner
       _injected.Add(id);
 
       InjectedRecords.Add(new InjectedRecord(
-        typeName:   mb.GetType().Name,
-        goName:     mb.gameObject.name,
-        sceneName:  sceneName,
-        pass:       pass,
-        isLate:     pass == InjectionPass.SceneLoaded
+        typeName: mb.GetType().Name,
+        goName: mb.gameObject.name,
+        sceneName: sceneName,
+        pass: pass,
+        isLate: pass == InjectionPass.SceneLoaded
       ));
     }
 
@@ -170,11 +172,11 @@ namespace Code.Zenjex.Extensions.Runner
 
       _injected.Add(id);
       InjectedRecords.Add(new InjectedRecord(
-        typeName:   mb.GetType().Name,
-        goName:     mb.gameObject.name,
-        sceneName:  mb.gameObject.scene.name,
-        pass:       InjectionPass.ZenjexBehaviour,
-        isLate:     false
+        typeName: mb.GetType().Name,
+        goName: mb.gameObject.name,
+        sceneName: mb.gameObject.scene.name,
+        pass: InjectionPass.ZenjexBehaviour,
+        isLate: false
       ));
 
       OnStateChanged?.Invoke();
@@ -193,19 +195,19 @@ namespace Code.Zenjex.Extensions.Runner
 
     public class InjectedRecord
     {
-      public readonly string        TypeName;
-      public readonly string        GoName;
-      public readonly string        SceneName;
+      public readonly string TypeName;
+      public readonly string GoName;
+      public readonly string SceneName;
       public readonly InjectionPass Pass;
-      public readonly bool          IsLate;
+      public readonly bool IsLate;
 
       public InjectedRecord(string typeName, string goName, string sceneName, InjectionPass pass, bool isLate)
       {
-        TypeName  = typeName;
-        GoName    = goName;
+        TypeName = typeName;
+        GoName = goName;
         SceneName = sceneName;
-        Pass      = pass;
-        IsLate    = isLate;
+        Pass = pass;
+        IsLate = isLate;
       }
     }
   }

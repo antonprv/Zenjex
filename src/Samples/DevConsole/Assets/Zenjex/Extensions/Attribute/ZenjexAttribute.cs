@@ -4,7 +4,7 @@
 using JetBrains.Annotations;
 using System;
 
-namespace Code.Zenjex.Extensions.Attribute
+namespace Zenjex.Extensions.Attribute
 {
   /// <summary>
   /// Drop-in replacement for [Inject].
