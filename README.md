@@ -1,374 +1,243 @@
-# Zenjex — Zenject-like API for Reflex
+# Zenjex
 
-> **Familiar Zenject syntax. Modern Reflex performance. Works with the latest Unity versions.**
-
----
-
-## 🇬🇧 English
-
-### The Problem
-
-Zenject is widely praised in the Unity community — but it hasn't kept up with modern Unity versions. Projects that rely on it face compatibility issues, abandoned support, and a framework that simply doesn't move forward.
-
-**Reflex** is the answer: it's the most actively maintained and performant DI framework for Unity today. But switching from Zenject means rewriting your entire installer layer and retraining your team.
-
-### The Solution
-
-**Zenjex** is a thin extension layer on top of [Reflex 14.1.0](https://github.com/gustavopsantos/reflex) that brings a Zenject-familiar API to Reflex's modern engine. You keep the syntax your team already knows. You get all the benefits of Reflex under the hood.
-
-On top of that, Zenjex solves a real Reflex limitation: **you can now add bindings to a container even after it has already been built** — a capability the base Reflex framework does not provide.
+**Zenject-compatible DI layer on top of Reflex — ported and fixed for Unity 6.3 LTS.**
 
 ---
 
-### Features
+## Going deeper
 
-- **Zenject-style API** — `Bind<T>().To<TImpl>().AsSingle()` works exactly as you'd expect
-- **Post-build container registration** — inject new bindings into an existing `Container` instance via `container.Bind<T>().FromInstance(...).AsSingle()`
-- **`BindInterfaces()` / `BindInterfacesAndSelf()`** — automatic interface resolution, same as Zenject
-- **`AsSingle()` / `AsTransient()` / `AsScoped()` / `AsEagerSingleton()`** — full lifetime control
-- **`ProjectRootInstaller`** — a MonoBehaviour base class for global DI setup with lifecycle hooks
-- **`RootContext`** — a static access point for resolving from the root container (for GameInstance-style architectures)
-- **Built on Reflex 14.1.0** — full IL2CPP support, source generators, scoped containers
+If you want to understand how everything works under the hood — the container hierarchy, resolver lifetimes, expression-tree-based activation, injection passes and their timing — all of that is covered in detail in the **[Architecture wiki](../../wiki/Architecture)**.
 
 ---
 
-### Project Structure
+## What is this?
 
-```
-src/
-├── Reflex/              ← Reflex 14.1.0 + modifications to container script.
-└── ReflexExtensions/    ← Zenjex extension layer
-    ├── BindingBuilder.cs              ← Fluent API for ContainerBuilder (setup phase)
-    ├── ContainerBindingBuilder.cs     ← Fluent API for Container (post-build registration)
-    ├── ReflexZenjectExtensions.cs     ← Bind<T>() extension on ContainerBuilder
-    ├── ContainerZenjectExtensions.cs  ← Bind<T>() extension on built Container
-    ├── ProjectRootInstaller.cs        ← Base MonoBehaviour for global DI
-    └── RootContext.cs                 ← Static resolver for GameInstance pattern
-```
+Zenjex is a production-ready dependency injection solution for Unity that solves a very specific, very painful problem: **your team uses Zenject/Extenject, you want to move to Unity 6, and you don't want to rewrite your injection layer from scratch or retrain anyone**.
+
+Here's what's in the box:
+
+- **Reflex 14.1.0** — the fastest DI framework for Unity, [benchmarked significantly ahead of Zenject](https://github.com/gustavopsantos/reflex#performance) — ported to **Unity 6.3 LTS** with all compatibility issues fixed
+- **Zenjex Extensions** — a Zenject-style API written on top of Reflex, so the bindings your team already knows (`Bind<T>().To<TImpl>().AsSingle()`) just work
+- **Fixed Reflex Debugger Window** — the editor debugging window is fully repaired for Unity 6.3; the original breaks in this version
+- **DevConsole** — a complete real-world sample project showing the full integration pattern in action
 
 ---
 
-### Installation
+## Why should a team care?
 
-1. Copy the `Reflex` folder into your Unity project
-2. Copy the `ReflexExtensions` folder anywhere in your project
+If your project is on an older Unity version and you're planning a migration to Unity 6, the DI framework is one of the first blockers. Extenject is not actively maintained, and its Unity 6 support is fragile. Reflex is maintained, fast, and clean — but switching to it cold means learning a new API, updating every installer, and retooling muscle memory across the whole team.
 
-Then follow the standard Reflex setup from the [official Reflex repository](https://github.com/gustavopsantos/reflex) (create a `ProjectScope`, configure scene scopes, etc).
+Zenjex eliminates that cost. The binding syntax is intentionally identical to Zenject. The injection attributes, the installer pattern, the way you resolve things — all of it maps to what your team already knows. Underneath, everything runs on Reflex, which means you get the performance benefit for free, without a rewrite.
 
-> **Note:** The TreeView debugger window has a known upstream bug in Reflex — the editor debug panel may behave incorrectly. This is a Reflex issue, not a Zenjex one.
+Concretely:
+- **Drop-in migration path**: if your team uses `Bind<T>().To<TImpl>().AsSingle()` today, that line works unchanged in Zenjex
+- **Faster than Zenject**: Reflex resolves dependencies faster due to expression-tree-based activation and smarter caching — on Mono and especially on IL2CPP
+- **Unity 6.3 LTS out of the box**: no fighting the editor, no broken debugger window, no hidden runtime crashes from version incompatibilities
+- **No retraining**: the three injection patterns (attribute, base class, manual resolve) are familiar to anyone who has used Zenject or Extenject
 
 ---
 
-### Usage
+## Integration guide
 
-#### 1. Setting up bindings (ContainerBuilder)
+### Step 1 — Copy the Zenjex folder into your project
+
+Drop the entire `Zenjex` folder into your project's `Assets`. That's it — no package manager, no git submodule. The folder contains both Reflex and the Zenjex extension layer, each with its own `.asmdef`, and Unity will pick them up automatically.
+
+> **Unity version**: the included Reflex build targets Unity 6.3 LTS. It will not work correctly on older versions without reverting the Unity 6-specific fixes.
+
+### Step 2 — Create a ReflexSettings asset
+
+In the Project window, find or create a `Resources` folder. Right-click inside it and choose **Create → Reflex → Settings**. This creates the `ReflexSettings.asset` that Reflex requires at runtime. Without it, Reflex will fail to locate its configuration and the container will not initialize.
+
+In the inspector you will find the **Root Scopes** list — this cannot be left empty. It needs a **RootScope prefab**, which you create by right-clicking in the Project window and choosing **Create → Reflex → RootScope**. Assign that prefab to the list.
+
+You will add your installer component to the RootScope prefab in Step 4.
+
+### Step 3 — Add a SceneScope to every scene
+
+Reflex requires a **SceneScope** in each scene. The container is not global or static — it is created fresh per scene and destroyed when the scene unloads, so every scene needs its own scope.
+
+For each scene in your project, go to **GameObject → Reflex → SceneScope** in the top menu. This adds a `SceneScope` GameObject with a `ContainerScope` component to the scene.
+
+> Without a `SceneScope`, Reflex won't initialize a container for that scene and nothing will be injected.
+
+### Step 4 — Create a class inheriting from `ProjectRootInstaller`
+
+Create a new C# class that inherits from `ProjectRootInstaller`. Add it as a component both to the **RootScope prefab** created in Step 2 and to the **SceneScope** GameObject in each scene. Reflex picks up installers via `GetComponentsInChildren` on the scope.
 
 ```csharp
+using System.Collections;
+using Reflex.Core;
+using Zenjex.Extensions.Core;
+
+[DefaultExecutionOrder(-250)]
 public class GameInstaller : ProjectRootInstaller
 {
     public override void InstallBindings(ContainerBuilder builder)
     {
-        // Bind interface to implementation, singleton
-        builder.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
-
-        // Bind with all interfaces of the concrete type
-        builder.Bind<PlayerProvider>().BindInterfaces().AsSingle();
-
-        // Bind with interfaces AND the concrete type itself
-        builder.Bind<PlayerProvider>().BindInterfacesAndSelf().AsSingle();
-
-        // Transient (new instance on each resolve)
-        builder.Bind<IEnemyFactory>().To<EnemyFactory>().AsTransient();
-
-        // Eager singleton (instantiated immediately at build time)
-        builder.Bind<IEventBus>().To<EventBus>().AsEagerSingleton();
-
-        // From existing instance
-        builder.Bind<ICoroutineRunner>().FromInstance(_myMonoBehaviour).AsSingle();
-
-        // Platform-based conditional binding
-        if (Application.platform != RuntimePlatform.Android)
-            builder.Bind<IInputService>().To<PCInputService>().AsSingle();
-        else
-            builder.Bind<IInputService>().To<PhoneInputService>().AsSingle();
+        // Bind all your services here — see Step 4
     }
-}
-```
 
-#### 2. Post-build registration (on existing Container)
-
-This is unique to Zenjex — Reflex doesn't support this natively.
-
-```csharp
-// GameInstance is created asynchronously AFTER the container is built
-public override IEnumerator InstallGameInstanceRoutine()
-{
-    yield return InstallerFactory.CreateGameInstanceRoutine(instance =>
-        _gameInstance = instance);
-
-    // Add GameInstance to the already-built container
-    RootContainer.Bind<GameInstance>()
-        .FromInstance(_gameInstance)
-        .BindInterfacesAndSelf()
-        .AsSingle();
-}
-```
-
-#### 3. ProjectRootInstaller
-
-```csharp
-public class GameInstaller : ProjectRootInstaller
-{
-    private GameInstance _gameInstance;
-
-    // Step 1: Register all services into ContainerBuilder
-    public override void InstallBindings(ContainerBuilder builder) { ... }
-
-    // Step 2: Async routine — create late objects, add them to the built container
+    // Optional. Implement the Unreal Engine-style GameInstance pattern:
+    // run coroutines here if you need async initialization before the game starts
+    // (e.g. loading remote config, warming up an asset bundle, etc.)
+    // If you don't need this, just leave the yield return null.
     public override IEnumerator InstallGameInstanceRoutine()
     {
-        yield return InstallerFactory.CreateGameInstanceRoutine(i => _gameInstance = i);
-        RootContainer.Bind<GameInstance>().FromInstance(_gameInstance).BindInterfacesAndSelf().AsSingle();
+        yield return null;
     }
 
-    // Step 3: All bindings done — start the game
-    public override void LaunchGame() => _gameInstance.LaunchGame();
-}
-```
-
-#### 4. RootContext — resolving without injection
-
-For cases where a class cannot receive dependencies through a constructor or `[Inject]` (e.g. a GameInstance singleton that needs services after DI is complete):
-
-```csharp
-private void ResolveDependencies()
-{
-    _staticData = RootContext.Resolve<IStaticDataService>();
-}
-
-// Guard check:
-if (RootContext.HasInstance)
-    var service = RootContext.Resolve<IMyService>();
-```
-
----
-
-### Binding Lifetime Reference
-
-| Method | Lifetime | Notes |
-|---|---|---|
-| `AsSingle()` | Singleton | Alias for `AsSingleton()` |
-| `AsSingleton()` | Singleton | One instance for the container's lifetime |
-| `AsTransient()` | Transient | New instance on every resolve |
-| `AsScoped()` | Scoped | One instance per scope |
-| `AsEagerSingleton()` | Singleton (Eager) | Instantiated immediately when the container is built |
-
----
-
-### Key Differences from Pure Reflex
-
-| Feature | Pure Reflex | Zenjex |
-|---|---|---|
-| Fluent binding API | `builder.AddSingleton<T>()` | `builder.Bind<T>().To<TImpl>().AsSingle()` |
-| Post-build registration | ❌ Not supported | ✅ `container.Bind<T>().FromInstance(x).AsSingle()` |
-| Interface auto-binding | Manual | `BindInterfaces()` / `BindInterfacesAndSelf()` |
-| GameInstance pattern | Requires custom setup | Built-in via `ProjectRootInstaller` + `RootContext` |
-
----
-
-### Requirements
-
-- Unity 2022.3+ (LTS) or newer
-- Reflex 14.1.0 (included)
-- .NET Standard 2.1
-
----
-
-### License
-
-© 2026 Anton Piruev. Any direct commercial use of derivative work is strictly prohibited. See [LICENSE](./LICENSE).
-
----
----
-
-## 🇷🇺 Русский
-
-### Проблема
-
-Zenject высоко ценится среди сообщества Unity-разработчиков, однако он перестал поддерживать современные версии Unity. Проекты, зависящие от Zenject, сталкиваются с проблемами совместимости, отсутствием поддержки и устаревшим фреймворком, который больше не развивается.
-
-Решение - **Reflex**: это наиболее активно поддерживаемый и производительный фреймворк внедрения зависимостей (DI) для Unity на сегодняшний день. Однако переход с Zenject означает переписывание всего слоя инсталлятора и переобучение команды.
-
-### Решение
-
-**Zenjex** - тонкий слой расширения поверх [Reflex 14.1.0](https://github.com/gustavopsantos/reflex), который привносит знакомый API Zenject в современный движок Reflex. Вы сохраняете синтаксис, известный вашей команде, и получаете все преимущества Reflex под капотом. Кроме того, Zenjex решает реальную проблему ограничения Reflex: теперь вы можете добавлять привязки в контейнер даже после того, как он уже построен - способность, которую базовая версия Reflex не предоставляет.
-
----
-
-### Что внутри
-
-- **Zenject-style API** — `Bind<T>().To<TImpl>().AsSingle()` работает ровно так, как вы к этому привыкли
-- **Регистрация после `Build()`** — добавляйте зависимости в уже готовый `Container` через `container.Bind<T>().FromInstance(...).AsSingle()`
-- **`BindInterfaces()` / `BindInterfacesAndSelf()`** — автоматическая привязка по интерфейсам, как в Zenject
-- **`AsSingle()` / `AsTransient()` / `AsScoped()` / `AsEagerSingleton()`** — полный контроль над временем жизни объекта
-- **`ProjectRootInstaller`** — базовый `MonoBehaviour` для глобальной настройки DI с хуками жизненного цикла
-- **`RootContext`** — статический доступ к корневому контейнеру для архитектур с GameInstance-синглтоном
-- **Основан на Reflex 14.1.0** — полная поддержка IL2CPP, source generators, scoped-контейнеры
-
----
-
-### Структура проекта
-
-```
-src/
-├── Reflex/              ← Reflex 14.1.0 + модифицированный Container.cs
-└── ReflexExtensions/    ← расширения Zenjex
-    ├── BindingBuilder.cs              ← Fluent API для ContainerBuilder (фаза сборки)
-    ├── ContainerBindingBuilder.cs     ← Fluent API для уже собранного Container
-    ├── ReflexZenjectExtensions.cs     ← Bind<T>() как метод расширения на ContainerBuilder
-    ├── ContainerZenjectExtensions.cs  ← Bind<T>() как метод расширения на готовом Container
-    ├── ProjectRootInstaller.cs        ← Базовый MonoBehaviour для глобального DI
-    └── RootContext.cs                 ← Статический доступ к корневому контейнеру
-```
-
----
-
-### Установка
-
-1. Скопируйте папку `Reflex` в ваш Unity-проект
-2. Скопируйте папку `ReflexExtensions` в любое удобное место в проекте
-
-Дальнейшая настройка — стандартная для Reflex, смотрите [официальный репозиторий](https://github.com/gustavopsantos/reflex) (создайте `ProjectScope`, настройте scene scopes и т.д.).
-
-> **Известный баг:** окно дебаггера с TreeView в Reflex недоработано автором фреймворка — редакторская панель отладки может вести себя некорректно. Это проблема Reflex, а не Zenjex.
-
----
-
-### Использование
-
-#### 1. Регистрация зависимостей (ContainerBuilder)
-
-```csharp
-public class GameInstaller : ProjectRootInstaller
-{
-    public override void InstallBindings(ContainerBuilder builder)
+    // Called after InstallGameInstanceRoutine() completes.
+    // Can be left empty, or used to kick off your game's entry point —
+    // for example, starting a StateMachine, loading the first scene,
+    // or initializing a GameInstance that owns the rest of the startup flow.
+    public override void LaunchGame()
     {
-        // Интерфейс → реализация, синглтон
-        builder.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
-
-        // Зарегистрировать по всем интерфейсам конкретного типа
-        builder.Bind<PlayerProvider>().BindInterfaces().AsSingle();
-
-        // Зарегистрировать по интерфейсам и по самому типу
-        builder.Bind<PlayerProvider>().BindInterfacesAndSelf().AsSingle();
-
-        // Transient — новый объект при каждом запросе
-        builder.Bind<IEnemyFactory>().To<EnemyFactory>().AsTransient();
-
-        // Eager singleton — создаётся сразу при Build(), не по запросу
-        builder.Bind<IEventBus>().To<EventBus>().AsEagerSingleton();
-
-        // Из готового объекта
-        builder.Bind<ICoroutineRunner>().FromInstance(_myMonoBehaviour).AsSingle();
-
-        // Условная регистрация по платформе
-        if (Application.platform != RuntimePlatform.Android)
-            builder.Bind<IInputService>().To<PCInputService>().AsSingle();
-        else
-            builder.Bind<IInputService>().To<PhoneInputService>().AsSingle();
+        // _gameInstance.Launch();
     }
 }
 ```
 
-#### 2. Регистрация в уже собранном контейнере
+`ProjectRootInstaller` runs at execution order `-280`, which guarantees the container is fully built before any other `Awake()` in the scene fires.
 
-Это уникальная возможность Zenjex — в чистом Reflex так сделать нельзя.
+### Step 5 — Bind your dependencies inside `InstallBindings`
+
+Use the Zenject-style fluent API to register everything the scene needs:
 
 ```csharp
-// GameInstance создаётся асинхронно, уже ПОСЛЕ того как контейнер собран
-public override IEnumerator InstallGameInstanceRoutine()
+public override void InstallBindings(ContainerBuilder builder)
 {
-    yield return InstallerFactory.CreateGameInstanceRoutine(instance =>
-        _gameInstance = instance);
+    // Bind interface to implementation, singleton lifetime
+    builder.Bind<IInputService>().To<InputService>().AsSingle();
 
-    // Добавляем GameInstance в уже готовый контейнер
-    RootContainer.Bind<GameInstance>()
-        .FromInstance(_gameInstance)
-        .BindInterfacesAndSelf()
-        .AsSingle();
+    // Bind concrete type directly
+    builder.Bind<AnalyticsManager>().AsSingle();
+
+    // Bind a pre-existing instance
+    builder.Bind<IConfig>().FromInstance(myConfigAsset).AsSingle();
+
+    // Bind to all implemented interfaces at once
+    builder.Bind<PlayerController>().BindInterfacesAndSelf().AsSingle();
+
+    // Transient — new instance on every resolve
+    builder.Bind<IEnemyFactory>().To<EnemyFactory>().AsTransient();
 }
 ```
 
-#### 3. ProjectRootInstaller
+---
+
+## Bonus: post-initialization binding
+
+Sometimes you need to register something into the container *after* it's already been built — for example, a runtime-loaded config or a service created during `InstallGameInstanceRoutine`. Use `RootContext.Runtime` for this:
 
 ```csharp
-public class GameInstaller : ProjectRootInstaller
+// Anywhere, after the container is built:
+RootContext.Runtime
+    .Bind<IRuntimeConfig>()
+    .FromInstance(loadedConfig)
+    .AsSingle();
+```
+
+`RootContext.Runtime` gives you direct access to the live container. `RootContext.HasInstance` lets you safely check whether it exists yet before calling it.
+
+---
+
+## Injecting dependencies
+
+Zenjex supports three injection patterns. Pick the one that fits the situation.
+
+### 1. Direct resolve — `RootContext.Resolve<T>()`
+
+Works everywhere, at any time after the container is built. No base class required, no attribute needed. Just call it.
+
+```csharp
+private void Awake()
 {
-    private GameInstance _gameInstance;
+    var config = RootContext.Resolve<IGameConfig>();
+    var input  = RootContext.Resolve<IInputService>();
+}
+```
 
-    // Шаг 1: регистрируем все сервисы
-    public override void InstallBindings(ContainerBuilder builder) { ... }
+Best for: controllers, managers, or any class where you want an explicit, traceable dependency grab.
 
-    // Шаг 2: создаём объекты, которые появляются позже, и добавляем их в контейнер
-    public override IEnumerator InstallGameInstanceRoutine()
+---
+
+### 2. Attribute injection on a plain `MonoBehaviour` — `[Zenjex]`
+
+Mark fields (or properties, or inject-methods) with `[Zenjex]`. **The object must already be present in the scene** when the bootstrap scene loads. Injection happens during `ProjectRootInstaller.Awake()`, before any other `Awake()` in the scene runs — so by the time your `Awake()` fires, the fields are already populated.
+
+```csharp
+using Zenjex.Extensions.Attribute;
+
+public class HUDController : MonoBehaviour
+{
+    [Zenjex] private IPlayerService _player;
+    [Zenjex] private IAudioService _audio;
+
+    private void Awake()
     {
-        yield return InstallerFactory.CreateGameInstanceRoutine(i => _gameInstance = i);
-        RootContainer.Bind<GameInstance>().FromInstance(_gameInstance).BindInterfacesAndSelf().AsSingle();
+        // _player and _audio are already injected here
+        _player.OnHealthChanged += UpdateHealthBar;
     }
-
-    // Шаг 3: всё готово, запускаем игру
-    public override void LaunchGame() => _gameInstance.LaunchGame();
 }
 ```
 
-#### 4. RootContext — получить зависимость без инъекции
+> If the object is in an **additively loaded scene**, injection happens after that scene loads — which means it arrives *after* `Awake()` has already run. In that case, the fields will be null inside `Awake()`. Zenjex will log a `ZNX-LATE` warning to make this visible. Use pattern #3 below if you need guaranteed pre-`Awake()` injection for dynamically loaded objects.
 
-Бывают случаи, когда класс не может получить зависимость через конструктор или `[Inject]` — например, GameInstance-синглтон, которому нужны сервисы уже после того как DI завершился:
+---
+
+### 3. `ZenjexBehaviour` — guaranteed pre-`Awake()` injection, works for runtime-instantiated objects
+
+Inherit from `ZenjexBehaviour` instead of `MonoBehaviour`. This gives the object its own `Awake()` at execution order `-100`, which means injection is guaranteed to happen before any user-level `Awake()` — even for prefabs that are `Instantiate()`-d at runtime. No manual wiring after `Instantiate()` needed — it just works.
+
+Instead of `Awake()`, override `OnAwake()`. The injected fields are already populated when it runs.
 
 ```csharp
-private void ResolveDependencies()
-{
-    _staticData = RootContext.Resolve<IStaticDataService>();
-}
+using Zenjex.Extensions.Attribute;
+using Zenjex.Extensions.Injector;
 
-// Проверка перед использованием:
-if (RootContext.HasInstance)
-    var service = RootContext.Resolve<IMyService>();
+public class Enemy : ZenjexBehaviour
+{
+    [Zenjex] private IEnemyConfig _config;
+    [Zenjex] private IAudioService _audio;
+
+    protected override void OnAwake()
+    {
+        base.OnAwake(); // always call this first
+
+        // _config and _audio are injected — safe to use
+        _audio.Play(_config.SpawnSound);
+    }
+}
 ```
 
 ---
 
-### Время жизни объектов
+## Injection timing summary
 
-| Метод | Время жизни | Примечание |
+| Pattern | Object must be in scene? | Fields ready in `Awake()`? |
 |---|---|---|
-| `AsSingle()` | Singleton | Псевдоним для `AsSingleton()` |
-| `AsSingleton()` | Singleton | Один объект на весь контейнер |
-| `AsTransient()` | Transient | Новый объект при каждом запросе |
-| `AsScoped()` | Scoped | Один объект на scope |
-| `AsEagerSingleton()` | Singleton (Eager) | Создаётся сразу при `Build()`, не по запросу |
+| `RootContext.Resolve<T>()` | No | Yes (you control it) |
+| `[Zenjex]` on `MonoBehaviour` | Yes (at load time) | Yes |
+| `[Zenjex]` on `MonoBehaviour` (additive scene) | Yes | **No** — ZNX-LATE warning |
+| `ZenjexBehaviour` + `[Zenjex]` | No | Yes |
 
 ---
 
-### Отличия от чистого Reflex
+## Sample projects
 
-| Возможность | Чистый Reflex | Zenjex |
-|---|---|---|
-| Fluent API регистрации | `builder.AddSingleton<T>()` | `builder.Bind<T>().To<TImpl>().AsSingle()` |
-| Регистрация после `Build()` | ❌ Недоступно | ✅ `container.Bind<T>().FromInstance(x).AsSingle()` |
-| Автопривязка по интерфейсам | Вручную | `BindInterfaces()` / `BindInterfacesAndSelf()` |
-| Паттерн GameInstance | Нужно реализовывать самому | Готово: `ProjectRootInstaller` + `RootContext` |
+The included **DevConsole** project is a full working implementation: it has a `GameInstaller`, multiple services bound via interface, `[Zenjex]` fields on scene objects, and `RootContext.Resolve<T>()` used in controllers. It's the fastest way to see everything in context.
 
----
+For a larger-scale example, **[LoneBrawler](https://github.com/antonprv/LoneBrawler)** is a complete midcore browser/mobile game built with this framework. It shows how Zenjex holds up across a full production codebase — multiple scenes, complex service graphs, real gameplay systems.
 
-### Требования
-
-- Unity 2022.3+ (LTS) или новее
-- Reflex 14.1.0 (включён в репозиторий)
-- .NET Standard 2.1
+If you want to understand how the framework works internally — how the container hierarchy is structured, how injection passes are timed, how expression-tree activation works — the **[project wiki](../../wiki)** has a full architecture breakdown of both Reflex and the Zenjex layer.
 
 ---
 
-### Лицензия
+## Requirements
 
-© 2026 Anton Piruev. Прямое коммерческое использование производных работ строго запрещено. См. [LICENSE](./LICENSE).
+- **Unity 6.3+** — tested on Unity 6.3 LTS, compatible with every Unity version past 6.3
+
+---
+
+*Created by Anton Piruev, 2026. Any direct commercial use of derivative work is strictly prohibited.*
