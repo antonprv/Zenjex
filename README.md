@@ -1,12 +1,12 @@
 # Zenjex
 
-**Zenject-compatible DI layer on top of Reflex — ported and fixed for Unity 6.3 LTS.**
+**Zenject-compatible DI layer on top of Reflex — ported and fixed for Unity 6.3+.**
 
 ---
 
 ## Going deeper
 
-If you want to understand how everything works under the hood — the container hierarchy, resolver lifetimes, expression-tree-based activation, injection passes and their timing — all of that is covered in detail in the **[Architecture wiki](../../wiki/Architecture)**.
+If you want to understand how everything works under the hood — the container hierarchy, resolver lifetimes, expression-tree-based activation, injection passes and their timing — all of that is covered in detail in the **[Architecture wiki](https://github.com/antonprv/Zenjex/wiki)**.
 
 ---
 
