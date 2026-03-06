@@ -32,7 +32,7 @@ Zenjex eliminates that cost. The binding syntax is intentionally identical to Ze
 Concretely:
 - **Drop-in migration path**: if your team uses `Bind<T>().To<TImpl>().AsSingle()` today, that line works unchanged in Zenjex
 - **Faster than Zenject**: Reflex resolves dependencies faster due to expression-tree-based activation and smarter caching — on Mono and especially on IL2CPP
-- **Unity 6.3 LTS out of the box**: no fighting the editor, no broken debugger window, no hidden runtime crashes from version incompatibilities
+- **Unity 6 out of the box**: no fighting the editor, no broken debugger window, no hidden runtime crashes from version incompatibilities
 - **No retraining**: the three injection patterns (attribute, base class, manual resolve) are familiar to anyone who has used Zenject or Extenject
 
 ---
