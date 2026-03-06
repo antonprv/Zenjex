@@ -1,6 +1,6 @@
 # Zenjex
 
-**Zenject-compatible DI layer on top of Reflex — ported and fixed for Unity 6.3+.**
+**Zenject-compatible DI layer on top of Reflex — ported and fixed for Unity 6.**
 
 ---
 
