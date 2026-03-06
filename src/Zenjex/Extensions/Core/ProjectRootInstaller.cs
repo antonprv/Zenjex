@@ -38,7 +38,7 @@ namespace Zenjex.Extensions.Core
       InstallBindings(builder);
       RootContainer = builder.Build();
 
-      // First injection pass — before any other Awake() in the scene runs.
+      // First injection pass - before any other Awake() in the scene runs.
       OnContainerReady?.Invoke();
 
       StartCoroutine(LateInitRoutine());
@@ -49,7 +49,7 @@ namespace Zenjex.Extensions.Core
       yield return InstallGameInstanceRoutine();
       LaunchGame();
 
-      // Second injection pass — after InstallGameInstanceRoutine() may have
+      // Second injection pass - after InstallGameInstanceRoutine() may have
       // added new bindings that the first pass could not resolve.
       OnGameLaunched?.Invoke();
     }

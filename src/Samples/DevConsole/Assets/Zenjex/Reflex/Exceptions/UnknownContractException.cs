@@ -1,8 +1,9 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Extensions;
 using System;
+
+using Reflex.Extensions;
 
 namespace Reflex.Exceptions
 {

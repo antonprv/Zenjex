@@ -1,9 +1,11 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Core;
 using System;
 using System.Collections;
+
+using Reflex.Core;
+
 using UnityEngine;
 
 namespace Zenjex.Extensions.Core
@@ -36,7 +38,7 @@ namespace Zenjex.Extensions.Core
       InstallBindings(builder);
       RootContainer = builder.Build();
 
-      // First injection pass — before any other Awake() in the scene runs.
+      // First injection pass - before any other Awake() in the scene runs.
       OnContainerReady?.Invoke();
 
       StartCoroutine(LateInitRoutine());
@@ -47,7 +49,7 @@ namespace Zenjex.Extensions.Core
       yield return InstallGameInstanceRoutine();
       LaunchGame();
 
-      // Second injection pass — after InstallGameInstanceRoutine() may have
+      // Second injection pass - after InstallGameInstanceRoutine() may have
       // added new bindings that the first pass could not resolve.
       OnGameLaunched?.Invoke();
     }

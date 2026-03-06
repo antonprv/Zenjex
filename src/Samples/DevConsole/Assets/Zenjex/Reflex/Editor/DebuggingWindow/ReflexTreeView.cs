@@ -1,14 +1,17 @@
 // Created by Anton Piruev in 2026.
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Core;
-using Reflex.Extensions;
-using Reflex.Resolvers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
+using Reflex.Core;
+using Reflex.Extensions;
+using Reflex.Resolvers;
+
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
+
 using UnityEngine;
 
 namespace Reflex.Editor.DebuggingWindow
@@ -21,7 +24,7 @@ namespace Reflex.Editor.DebuggingWindow
     public string[] Contracts;    // shown as badges in Hierarchy column
     public string Lifetime;
     public string ResolverKind;
-    public Func<string> Resolutions;  // live counter — only set for resolvers
+    public Func<string> Resolutions;  // live counter - only set for resolvers
     public List<CallSite> Callsite;
     public Texture Icon;
   }
@@ -38,7 +41,7 @@ namespace Reflex.Editor.DebuggingWindow
 
     private enum Col { Hierarchy, Kind, Lifetime, Calls }
 
-    // All node data keyed by item id — populated externally via SetData().
+    // All node data keyed by item id - populated externally via SetData().
     private Dictionary<int, ReflexNode> _nodes = new();
 
     // Pending tree that BuildRoot will consume on the next Reload().
@@ -87,7 +90,7 @@ namespace Reflex.Editor.DebuggingWindow
         return empty;
       }
 
-      // Гарантируем, что у root есть children list
+      // Ensure root has children list
       if (_pendingRoot.children == null)
         _pendingRoot.children = new List<TreeViewItem<int>>();
 

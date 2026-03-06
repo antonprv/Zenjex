@@ -11,7 +11,7 @@ namespace Reflex.Editor.DebuggingWindow
     {
       var input = obj.ToString();
 
-      // SHA1Managed is obsolete in .NET 5+ — use SHA1.Create() instead
+      // SHA1Managed is obsolete in .NET 5+ - use SHA1.Create() instead
       using (var sha1 = System.Security.Cryptography.SHA1.Create())
       {
         var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(input));

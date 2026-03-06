@@ -1,8 +1,9 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Utilities;
 using System;
+
+using Reflex.Utilities;
 
 namespace Reflex.Reflectors
 {

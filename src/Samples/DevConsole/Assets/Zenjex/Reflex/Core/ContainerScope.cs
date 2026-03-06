@@ -1,8 +1,10 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Injectors;
 using System;
+
+using Reflex.Injectors;
+
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.SceneManagement;

@@ -14,8 +14,8 @@ namespace Zenjex.Extensions.Injector
   /// before OnAwake() runs, with no per-frame scanning overhead.
   ///
   /// Two injection layers (cooperate, no double-injection):
-  ///   1. ZenjexBehaviour (this)  — base-class Awake, strictest timing
-  ///   2. ZenjexRunner            — fallback for plain MonoBehaviour classes
+  ///   1. ZenjexBehaviour (this)  - base-class Awake, strictest timing
+  ///   2. ZenjexRunner            - fallback for plain MonoBehaviour classes
   ///
   /// Usage:
   ///   public class MyService : ZenjexBehaviour

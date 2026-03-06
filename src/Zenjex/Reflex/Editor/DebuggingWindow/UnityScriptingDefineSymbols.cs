@@ -35,7 +35,7 @@ public static class UnityScriptingDefineSymbols
     SetSymbols(symbols);
   }
 
-  // Legacy overloads kept for source compatibility — BuildTargetGroup param is ignored,
+  // Legacy overloads kept for source compatibility - BuildTargetGroup param is ignored,
   // we always operate on the active named build target instead.
   // BuildTargetGroup itself is not obsolete, but selectedBuildTargetGroup is in Unity 6.
   public static void Add(string symbol, BuildTargetGroup _) => Add(symbol);

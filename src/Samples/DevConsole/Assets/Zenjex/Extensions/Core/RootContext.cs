@@ -1,10 +1,17 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
+using Reflex.Core;
+
 namespace Zenjex.Extensions.Core
 {
   public static class RootContext
   {
+    /// <summary>
+    /// Use this for post-initialization binding
+    /// </summary>
+    public static Container Runtime => ProjectRootInstaller.RootContainer;
+
     /// <summary>
     /// Check if a global RootContainer has been created
     /// </summary>

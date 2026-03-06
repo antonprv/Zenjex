@@ -1,8 +1,10 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Configuration;
 using System;
+
+using Reflex.Configuration;
+
 using UnityEngine;
 
 namespace Reflex.Logging

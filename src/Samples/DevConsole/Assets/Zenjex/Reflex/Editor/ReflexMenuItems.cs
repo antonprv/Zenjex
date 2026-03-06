@@ -1,12 +1,15 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
+using System.IO;
+
 using Reflex.Configuration;
 using Reflex.Core;
 using Reflex.Editor.DebuggingWindow;
-using System.IO;
+
 using UnityEditor;
 using UnityEditor.SceneManagement;
+
 using UnityEngine;
 
 namespace Reflex.Editor

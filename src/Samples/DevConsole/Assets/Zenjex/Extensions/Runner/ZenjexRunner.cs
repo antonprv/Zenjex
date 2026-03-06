@@ -14,23 +14,23 @@ namespace Zenjex.Extensions.Runner
 {
   /// <summary>
   /// Injects [Zenjex] members across all scenes in two passes, both driven by
-  /// ProjectRootInstaller — the only place where we know the container state for certain.
+  /// ProjectRootInstaller - the only place where we know the container state for certain.
   ///
-  /// Pass 1 — OnContainerReady (fires synchronously inside ProjectRootInstaller.Awake()):
+  /// Pass 1 - OnContainerReady (fires synchronously inside ProjectRootInstaller.Awake()):
   ///   RootContainer is freshly built. We walk all loaded scenes and inject everything
   ///   resolvable right now. Because this runs inside Awake() at ExecutionOrder -280,
   ///   all subsequent Awake() calls in the scene will already see injected fields.
   ///
-  /// Pass 2 — OnGameLaunched (fires after InstallGameInstanceRoutine() completes):
+  /// Pass 2 - OnGameLaunched (fires after InstallGameInstanceRoutine() completes):
   ///   If InstallGameInstanceRoutine() registered additional bindings, objects not yet
   ///   injected get a second attempt.
   ///
-  /// Pass 3 — SceneManager.sceneLoaded:
+  /// Pass 3 - SceneManager.sceneLoaded:
   ///   Covers scenes loaded additively after launch. Runs after their Awake(),
   ///   so emits ZNX-LATE warnings for plain MonoBehaviour classes.
   ///   Use ZenjexBehaviour for guaranteed pre-Awake injection in additive scenes.
   ///
-  /// Runtime — InjectGameObject():
+  /// Runtime - InjectGameObject():
   ///   Call manually right after Instantiate() for dynamically created objects.
   /// </summary>
   public static class ZenjexRunner
@@ -186,9 +186,9 @@ namespace Zenjex.Extensions.Runner
 
     public enum InjectionPass
     {
-      ContainerReady,   // Pass 1 — inside ProjectRootInstaller.Awake()
-      GameLaunched,     // Pass 2 — after InstallGameInstanceRoutine()
-      SceneLoaded,      // Pass 3 — additive scene loaded after launch (late)
+      ContainerReady,   // Pass 1 - inside ProjectRootInstaller.Awake()
+      GameLaunched,     // Pass 2 - after InstallGameInstanceRoutine()
+      SceneLoaded,      // Pass 3 - additive scene loaded after launch (late)
       Manual,           // InjectGameObject() call
       ZenjexBehaviour,  // ZenjexBehaviour.Awake()
     }

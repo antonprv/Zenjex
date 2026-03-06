@@ -1,10 +1,11 @@
 // Created by Anton Piruev in 2026. 
 // Any direct commercial use of derivative work is strictly prohibited.
 
-using Reflex.Core;
-using Reflex.Enums;
 using System;
 using System.Runtime.CompilerServices;
+
+using Reflex.Core;
+using Reflex.Enums;
 
 namespace Reflex.Resolvers
 {
