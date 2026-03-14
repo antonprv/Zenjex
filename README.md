@@ -1,6 +1,8 @@
 🇬🇧 [English](#english) · 🇷🇺 [Русский](#русский)
 
-![Zenjex logo](assets/logo.png)
+<div align="center">
+  <img src="assets/logo.png" width="300" alt="Zenjex logo">
+</div>
 
 ---
 
