@@ -14,7 +14,7 @@
 
 ### Going deeper
 
-If you want to understand how everything works under the hood - the container hierarchy, resolver lifetimes, expression-tree-based activation, injection passes and their timing - all of that is covered in detail with diagrams and tables in the **[documentation](https://antonprv.github.io/zenjex-website/)** in the **[Architecture wiki](https://github.com/antonprv/Zenjex/wiki)**.
+If you want to understand how everything works under the hood - the container hierarchy, resolver lifetimes, expression-tree-based activation, injection passes and their timing - all of that is covered in detail with diagrams and tables in the **[documentation](https://antonprv.github.io/zenjex-website/)** or in the **[github wiki](https://github.com/antonprv/Zenjex/wiki)**.
 
 ---
 
