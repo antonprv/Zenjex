@@ -27,22 +27,22 @@ namespace Zenjex.Extensions.SceneContext
   /// </summary>
   public static class ZenjexSceneContext
   {
-    private static readonly Dictionary<int, Container> _containers = new();
-    private static int _lastRegisteredHandle = -1;
+    private static readonly Dictionary<ulong, Container> _containers = new();
+    private static ulong _lastRegisteredHandle = 0;
 
     // ── Registration (called by SceneInstaller) ───────────────────────────────
 
     internal static void Register(UnityEngine.SceneManagement.Scene scene, Container container)
     {
-      _containers[scene.handle] = container;
-      _lastRegisteredHandle = scene.handle;
+      _containers[scene.handle.GetRawData()] = container;
+      _lastRegisteredHandle = scene.handle.GetRawData();
     }
 
     internal static void Unregister(UnityEngine.SceneManagement.Scene scene)
     {
-      _containers.Remove(scene.handle);
-      if (_lastRegisteredHandle == scene.handle)
-        _lastRegisteredHandle = -1;
+      _containers.Remove(scene.handle.GetRawData());
+      if (_lastRegisteredHandle == scene.handle.GetRawData())
+        _lastRegisteredHandle = 0;
     }
 
     // ── Public API ────────────────────────────────────────────────────────────
@@ -52,7 +52,7 @@ namespace Zenjex.Extensions.SceneContext
     /// that scene has no <see cref="SceneInstaller"/>.
     /// </summary>
     public static Container Get(UnityEngine.SceneManagement.Scene scene) =>
-      _containers.TryGetValue(scene.handle, out var c) ? c : null;
+      _containers.TryGetValue(scene.handle.GetRawData(), out var c) ? c : null;
 
     /// <summary>
     /// Returns the scene-scoped container for the scene that was most recently loaded

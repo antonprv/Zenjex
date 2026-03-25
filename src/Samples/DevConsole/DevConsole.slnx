@@ -1,0 +1,8 @@
+﻿<Solution>
+  <Project Path="Reflex.csproj" />
+  <Project Path="SimpleInput.csproj" />
+  <Project Path="DevConsole.csproj" />
+  <Project Path="Reflex.Editor.csproj" />
+  <Project Path="Zenjex.csproj" />
+  <Project Path="Assembly-CSharp-Editor-firstpass.csproj" />
+</Solution>

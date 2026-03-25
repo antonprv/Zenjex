@@ -1,0 +1,721 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.4/staging' branch; Version is '6000.4.0f1 (8cf496087c8f) revision 9237654'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User" at "2026-03-25T09:15:15.0923217Z"
+OS: 'Windows 11  (10.0.26100) ProfessionalWorkstation' Language: 'ru' Physical Memory: 32543 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-03-25T09:15:15Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+C:/Repos/Zenjex/src/Samples/DevConsole
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+50237
+-licensingIpc
+LicenseClient-User
+-force-d3d12
+-job-worker-count
+9
+-background-job-worker-count
+8
+-gc-helper-count
+1
+-name
+AssetImport
+Successfully changed project path to: C:/Repos/Zenjex/src/Samples/DevConsole
+C:/Repos/Zenjex/src/Samples/DevConsole
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Player connection [24460]  Target information:
+
+Player connection [24460]  * "[IP] 10.20.52.152 [Port] 0 [Flags] 2 [Guid] 1118918989 [EditorId] 1118918989 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-JDUDAHE) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [24460] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [24460] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 9
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 2.30 ms, found 3 plugins.
+Initialize engine version: 6000.4.0f1 (8cf496087c8f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Repos/Zenjex/src/Samples/DevConsole/Assets
+Forcing GfxDevice: Direct3D 12
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-User"
+[Licensing::IpcConnector] LicenseClient-User channel disconnected successfully.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User-6000.4.0" at "2026-03-25T09:15:16.2764149Z"
+d3d12: failed to query info queue interface (0x80004002).
+Direct3D:
+    Version:         Direct3D 12 [level 12.2]
+    Renderer:        NVIDIA GeForce RTX 4070 Laptop GPU (ID=0x2820)
+    Vendor:          NVIDIA
+    VRAM:            7948 MB
+    App VRAM Budget: 7180 MB
+    Driver:          32.0.15.9579
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56416
+CodeReloadManager initialized
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              0b34f65142e94ffdbb7063658b4e7b59
+  Correlation Id:          9beb5b2690b0c1f40048fb6e32771c16
+  External correlation Id: 3165294909527977309
+  Machine Id:              BVjh6/fJmMGeb49K+i6kyCZyA9E=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-User-6000.4.0" (connect: 0.00s, validation: 0.00s, handshake: 1.29s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-User-6000.4.0-notifications" at "2026-03-25T09:15:17.5689405Z"
+[Licensing::Module] Licensing Background thread has ended after 2.48s
+[Licensing::Module] Licensing is initialized (took 0.41s).
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 10171442449779-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/VisionOSPlayer/UnityEditor.VisionOS.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/AppleTVSupport/UnityEditor.AppleTV.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.422185 seconds.
+Native extension for LinuxStandalone target not found
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+Native extension for AppleTV target not found
+[usbmuxd] Start listen thread
+[usbmuxd] Listen thread started
+Native extension for iOS target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 300 ms
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Failed to load: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/VisionOSPlayer\x64\UnityEditor.VisionOS.Native.dll
+Native extension for VisionOS target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Package Manager log level set to [2]
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.816 seconds
+Domain Reload Profiling: 1839ms
+	BeginReloadAssembly (152ms)
+	RebuildCommonClasses (75ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (503ms)
+	LoadAllAssembliesAndSetupDomain (271ms)
+		LoadAssemblies (147ms)
+		AnalyzeDomain (257ms)
+			TypeCache.Refresh (255ms)
+				TypeCache.ScanAssembly (239ms)
+	FinalizeReload (816ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (457ms)
+			BeforeProcessingInitializeOnLoad (106ms)
+			ProcessInitializeOnLoadAttributes (104ms)
+			ProcessInitializeOnLoadMethodAttributes (66ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+Assembly Assembly-CSharp-Editor.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp.dll at Library/ScriptAssemblies/Assembly-CSharp.dll not valid. Loading of assembly skipped.
+Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
+Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
+Assembly Unity.InputSystem.IntegrationTests.dll at Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Config.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Searcher.EditorTests.dll at Library/ScriptAssemblies/Unity.Searcher.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.ShaderGraph.Editor.Tests.dll at Library/ScriptAssemblies/Unity.ShaderGraph.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.UnifiedRayTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
+Native extension for LinuxStandalone target not found
+Native extension for AppleTV target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Failed to load: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/VisionOSPlayer\x64\UnityEditor.VisionOS.Native.dll
+Native extension for VisionOS target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.068 seconds
+Domain Reload Profiling: 2126ms
+	BeginReloadAssembly (160ms)
+		DisableScriptedObjects (5ms)
+		CreateAndSetChildDomain (33ms)
+	RebuildCommonClasses (52ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (65ms)
+	LoadAllAssembliesAndSetupDomain (764ms)
+		LoadAssemblies (497ms)
+		AnalyzeDomain (334ms)
+			TypeCache.Refresh (245ms)
+				TypeCache.ScanAssembly (223ms)
+			BuildScriptInfoCaches (73ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (1069ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (31ms)
+			BeforeProcessingInitializeOnLoad (225ms)
+			ProcessInitializeOnLoadAttributes (449ms)
+			ProcessInitializeOnLoadMethodAttributes (90ms)
+			AfterProcessingInitializeOnLoad (6ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Unloading 24 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6452 unused Assets / (4.7 MB). Loaded Objects now: 7302.
+Memory consumption went from 160.3 MB to 155.6 MB.
+Total: 7.393300 ms (FindLiveObjects: 0.494800 ms CreateObjectMapping: 0.317100 ms MarkObjects: 4.801700 ms  DeleteObjects: 1.777600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 183997.043902 seconds.
+  path: Assets/Zenjex/Reflex/Caching/TypeConstructionInfo.cs
+  importAddress: Guid(7c579720437f4e76b372a6513c1ac966) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Caching/TypeConstructionInfo.cs using Guid(7c579720437f4e76b372a6513c1ac966) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a5a7b71640eaa8a99432c9a0478a3637') in 0.0955565 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=900732030b7a80f3cdabd3ffa1da93f0 DependenciesID=dbfdb3757d412337c8ae02d1d78f6ca7 StaticDependenciesID=e098c8593dd15e1f0d5666f3b70ae9c5 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat
+  importAddress: Guid(79459efec17a4d00a321bdcc27bbc385) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat using Guid(79459efec17a4d00a321bdcc27bbc385) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '78e2cb81edb69715d76ca1be53168aa8') in 0.0470027 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6cc1822251b7d3602c7eba2b6ec14185 DependenciesID=605ea2213ca3bb1f4d99fd6bc5e55f86 StaticDependenciesID=f2f0736f3a5db41089dc2de22e52e727 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Zenjex/Extensions/SceneContext/ZenjexSceneContext.cs
+  importAddress: Guid(593d4c149d074cbfa312ee7c09b78582) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Extensions/SceneContext/ZenjexSceneContext.cs using Guid(593d4c149d074cbfa312ee7c09b78582) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '9bebbfc1d40d06e75900b6b8ca489901') in 0.0175709 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b0366f287ef1ae80dea049f5eb5669de DependenciesID=7546e42bf4107c1135937ade5ee7d2c3 StaticDependenciesID=2b361f39803f40f4265e71996b4cdbbf 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Zenjex/Reflex/Attributes/SourceGeneratorInjectableAttribute.cs
+  importAddress: Guid(b6456312c64ffde47916903090c743b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Attributes/SourceGeneratorInjectableAttribute.cs using Guid(b6456312c64ffde47916903090c743b6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6ddc77fa8fe79f40760d7bdae351e7ac') in 0.0168341 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f5a36dd7460638a043ce172f5de09c25 DependenciesID=6a027244975fedf6dfad0afe3d8905a4 StaticDependenciesID=a2aaec888c6001071f69789bfd47db33 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Zenjex/Extensions/Lifecycle/IInitializable.cs
+  importAddress: Guid(7239001f3ddd481e85ef09ac87a25956) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Extensions/Lifecycle/IInitializable.cs using Guid(7239001f3ddd481e85ef09ac87a25956) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a1236f818f4aca05acdde3558351c958') in 0.0156139 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=69e2804ff0df7ad64945f5565e01208e DependenciesID=e87a77646fad55336c562ee159691f98 StaticDependenciesID=4e7d12bd9bffe5feab02ba2936a10fe0 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+  importAddress: Guid(fe393ace9b354375a9cb14cdbbc28be4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader using Guid(fe393ace9b354375a9cb14cdbbc28be4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a9c1497603a403e73014e80d226c007a') in 0.0171838 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=68916d010ba12e93b945a9a518e987f9 DependenciesID=f825658a74829254c0f2c0629933d5bc StaticDependenciesID=fc7b77840337b8921620e800bb6e7ccb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Resources/ReflexSettings.asset
+  importAddress: Guid(6d6c05d605266f142bcf0bb4c47cc8f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Resources/ReflexSettings.asset using Guid(6d6c05d605266f142bcf0bb4c47cc8f5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter)Reflex LogLevel set to Info
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:Log (object,UnityEngine.Object)
+Reflex.Logging.ReflexLogger:Log (object,Reflex.Logging.LogLevel,UnityEngine.Object) (at Assets/Zenjex/Reflex/Logging/ReflexLogger.cs:42)
+Reflex.Logging.ReflexLogger:.cctor () (at Assets/Zenjex/Reflex/Logging/ReflexLogger.cs:20)
+Reflex.Configuration.ReflexSettings:OnValidate () (at Assets/Zenjex/Reflex/Configuration/ReflexSettings.cs:44)
+UnityEditor.AssetDatabase:LoadMainAssetAtPath (string)
+UnityEditor.Search.AssetIndexer:IndexProperties (int&,string&,bool&)
+UnityEditor.Search.AssetIndexer:IndexDocument (string,bool)
+UnityEditor.Search.SearchIndexArtifactImporter:OnImportAsset (UnityEditor.AssetImporters.AssetImportContext)
+UnityEditor.AssetImporters.ScriptedImporter:GenerateAssetData (UnityEditor.AssetImporters.AssetImportContext)
+
+(Filename: Assets/Zenjex/Reflex/Logging/ReflexLogger.cs Line: 20)
+
+ -> (Import Result ID: '0610d91059a5becf14b523d960c0ef0c') in 0.0375078 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bb2ee01e5d6963e5ce5234db7bfbd92f DependenciesID=736f728865da72868bffb97d74911361 StaticDependenciesID=cc8559d0f29b953ef010ad63a3712609 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/DevConsole/Frontend/Controllers/ConsoleButtonController.cs
+  importAddress: Guid(216d06687a435cf438e460e73e390366) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Frontend/Controllers/ConsoleButtonController.cs using Guid(216d06687a435cf438e460e73e390366) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '0091e7d4f6db566d45de493d20879068') in 0.0146835 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3ce1484aa80313911dfba897ea6150c8 DependenciesID=f52e2e1bed09f13c8295baf32a0c1b0c StaticDependenciesID=e3159eecd8d651b43dba913f70c1ce57 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Zenjex/Extensions/Runner/ZenjexRunner.cs
+  importAddress: Guid(c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Extensions/Runner/ZenjexRunner.cs using Guid(c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '15602f43a3b8cb6b6c1adef5909246d0') in 0.0143068 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=584641fc4d0ef0ceca63133fd629b685 DependenciesID=5b5d0a79ba5d1c0a2f2b08d7bb8cffcf StaticDependenciesID=e356052256db78647e1e76cdf8f38136 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Zenjex/Reflex/Injectors/GameObjectInjector.cs
+  importAddress: Guid(16c78233d2a248769a64fa100bb739d8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Injectors/GameObjectInjector.cs using Guid(16c78233d2a248769a64fa100bb739d8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8b87243b4724e967d422f877bc9e4664') in 0.0140684 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a9411d328f893af0d7660ea648d7ffce DependenciesID=6f42f988cec4f3e17061c7af402d4dcd StaticDependenciesID=5a0c29a293bb608fea6c17261dc43b11 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Zenjex/Reflex/Injectors/AttributeInjector.cs
+  importAddress: Guid(f645897a9a564313a924e32ccc6cf3f6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Injectors/AttributeInjector.cs using Guid(f645897a9a564313a924e32ccc6cf3f6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'baed1a5e251dfde42dd550665048915f') in 0.0186678 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=64ac5bc985247798fe36fbf2ce271f34 DependenciesID=b38988a7200afe8ad3f2a851cd7c4577 StaticDependenciesID=01b75ff12206e4561080f122d449d8d4 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Zenjex/Reflex/Injectors/IAttributeInjectionContract.cs
+  importAddress: Guid(940f0222677f22b49abd62de7899e206) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Injectors/IAttributeInjectionContract.cs using Guid(940f0222677f22b49abd62de7899e206) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8471853798c4246747b9fbee039f6d14') in 0.016296 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=63631fa5ab521ac7e0206533706d1c46 DependenciesID=a51d6bbfbe4e97dc31f2af9f6debf778 StaticDependenciesID=9de7ff075f1ac020e43b85ccd70b8070 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Zenjex/Reflex/Core/Binding.cs
+  importAddress: Guid(14350904967d4d329e742df0ae401daa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Core/Binding.cs using Guid(14350904967d4d329e742df0ae401daa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b8d408255421b889c54080eeec6367e1') in 0.0156427 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a17a6289b3f82b34c7fb717dcf277ed7 DependenciesID=db089aeed0857453fa6d3aabc6fee5a9 StaticDependenciesID=c7178fe01cc84f61955bb75da6acc5cb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Zenjex/Reflex/Enums/Lifetime.cs
+  importAddress: Guid(a59e906cea134af698deffdc89b5d81e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Enums/Lifetime.cs using Guid(a59e906cea134af698deffdc89b5d81e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'abe6ea2bee7b324ae0db0030b9919576') in 0.0155004 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9fe7532e0988b5e75c743e03ba3bdd19 DependenciesID=672e7aa8d45064ea4e7d48a645b5ba0d StaticDependenciesID=5352a9941aa4bc22d74a410d2f396ed0 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Zenjex/Extensions/Core/ContainerBindingBuilder.cs
+  importAddress: Guid(d686801085943b14f883375533bf4dcf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Extensions/Core/ContainerBindingBuilder.cs using Guid(d686801085943b14f883375533bf4dcf) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '41c7b69dd74acd26fea5e37891e471b4') in 0.0153954 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d39bcfd73be10b1e289755e3533542e2 DependenciesID=d49fc262c8d496fb4b46656b519955da StaticDependenciesID=4fdf567375ea5bd6802172126de7f4fd 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/DevConsole/DevConsole_Actions.inputactions
+  importAddress: Guid(052faaac586de48259a63d0c4782560b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/DevConsole_Actions.inputactions using Guid(052faaac586de48259a63d0c4782560b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a5b68b308030fe322d8911c27d8b3ee3') in 0.2230477 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8c8d1124f557b457a5756f1b9e4c1931 DependenciesID=96cd6cae5ee05f68fcc5abb8b5adb05e StaticDependenciesID=d7a07edf67ab1c95c68ebf97a5492933 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 6
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Zenjex/Reflex/Resolvers/TransientFactoryResolver.cs
+  importAddress: Guid(f20e2dde70ba455393836ce5e43d30a7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Resolvers/TransientFactoryResolver.cs using Guid(f20e2dde70ba455393836ce5e43d30a7) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '9734a85e54b32d0598808bf4beac3f8e') in 0.0150407 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c1dd2b0a665040272e0f1e40b606be93 DependenciesID=38962eab039d8984c117587d6495b08f StaticDependenciesID=9935de42f31a14472d95b1b69fe97329 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/DevConsole/Backend/Data/Configs/BuildConfig.cs
+  importAddress: Guid(0d82aad35f315d141ab31c022db322ee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Backend/Data/Configs/BuildConfig.cs using Guid(0d82aad35f315d141ab31c022db322ee) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3d1090cf1225828490273ebf2ce567d3') in 0.0147483 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=58e426c170184e2891a51671da4d19ec DependenciesID=2a2cda05cf7ad363768447de31b7f054 StaticDependenciesID=dbcebab0d59147a2f8385e033dc8b83a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Plugins/SimpleInput/Scripts/ButtonInputs/ButtonInputUI.cs
+  importAddress: Guid(995f34434fbe45d46aacf4e120446279) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Plugins/SimpleInput/Scripts/ButtonInputs/ButtonInputUI.cs using Guid(995f34434fbe45d46aacf4e120446279) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1d058a79627d4335e1e441377ebf44a3') in 0.0132674 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2452b9e0516589c5d505a28e177719c0 DependenciesID=cc3f1845d7bcefc0f40c13619b6d3476 StaticDependenciesID=007d64181ad902f2191cfd16c2f8f406 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Plugins/SimpleInput/Scripts/AxisInputs/AxisInputUIArrows.cs
+  importAddress: Guid(1a70dc776bc37f748a08a41f672a58e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Plugins/SimpleInput/Scripts/AxisInputs/AxisInputUIArrows.cs using Guid(1a70dc776bc37f748a08a41f672a58e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ecfc31844a851467424041f60f3e0278') in 0.0152514 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c75de03e6010066e5d281bde4738df54 DependenciesID=894e3b5534cd6866e211c93ac1ebbb69 StaticDependenciesID=c9a57b1eb7f6383544a52f91df6d53c0 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Plugins/SimpleInput/Scripts/Core/SimpleInputUtils.cs
+  importAddress: Guid(68bf9be257e135b4da6233529c2a1cf6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Plugins/SimpleInput/Scripts/Core/SimpleInputUtils.cs using Guid(68bf9be257e135b4da6233529c2a1cf6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ede0add59086524f1cc193c466f39a83') in 0.0130614 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5050acc880f557f017c4424a23a388c2 DependenciesID=0205c3050c6b2ce591718090a7a1be64 StaticDependenciesID=3e97d574d85cc4fdefe3b41ba7edc5cb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMP_SDF-HDRP LIT.shadergraph
+  importAddress: Guid(ca2ed216f98028c4dae6c5224a952b3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/TextMesh Pro/Shaders/TMP_SDF-HDRP LIT.shadergraph using Guid(ca2ed216f98028c4dae6c5224a952b3c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '45ea0b7b43266c207ccff6c2c14f94d6') in 0.0259318 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d6ecbec5975e7856db697a3f297a8576 DependenciesID=76e12806a6065d62b500afd134e4cc95 StaticDependenciesID=d2e47b0202b7793cc774999f519fc45b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Zenjex/Reflex/Core/Container.cs
+  importAddress: Guid(d71cd1ac1b469934c86350f7ef5fc2db) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Core/Container.cs using Guid(d71cd1ac1b469934c86350f7ef5fc2db) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '1057f5875db33366ead6a1bc99f67d69') in 0.015596 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7d3834b1ee80b856bead79748d50987a DependenciesID=5db94d5e9215d15db3ccf6e5265931a6 StaticDependenciesID=b733ce48c0078e2ab8e5a6c136d68683 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Zenjex/Reflex/AssemblyInfo.cs
+  importAddress: Guid(1776df6272124466c90ec7861b6905a4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/AssemblyInfo.cs using Guid(1776df6272124466c90ec7861b6905a4) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'de04fc59a885aec4cdfb57921ebe221d') in 0.014515 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=100889534f9741f0da30a8d16c88dc63 DependenciesID=37fd0f4d34bf541f9c563ac782e229af StaticDependenciesID=d50de5b030eca68543b9b1b872c5dd3b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/DevConsole/Backend/Infrastructure/Services/DevConsole/Commands/Logs/LogStatsCommand.cs
+  importAddress: Guid(3c754cb9944baf44e8f4ec0f51f36abc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Backend/Infrastructure/Services/DevConsole/Commands/Logs/LogStatsCommand.cs using Guid(3c754cb9944baf44e8f4ec0f51f36abc) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'e026afc6f737cc5febbc93629fef7659') in 0.0165804 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e35d445dd28a53aba2175c75383b1bca DependenciesID=fc67514bd0ca9573af9839875d1964f4 StaticDependenciesID=c29b1362e20a53a5c5f8adf6e0490cf3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/DevConsole/Backend/Infrastructure/Services/DevConsole/Interfaces/IConsoleCommand.cs
+  importAddress: Guid(deaa5b5faa1abe045b757b6249a64e68) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Backend/Infrastructure/Services/DevConsole/Interfaces/IConsoleCommand.cs using Guid(deaa5b5faa1abe045b757b6249a64e68) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c4e93aff27be3111eacf07dae50f1db1') in 0.0151739 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c3623dc88de6d7ce47dd1d618e833ed9 DependenciesID=2b20e52c81022c83efdcb7f6772e1da8 StaticDependenciesID=8ad2a065e766c7d33903c3edf53bdf4a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Plugins/SimpleInput/Scripts/MouseButtonInputs/MouseButtonInputSwipeGesture.cs
+  importAddress: Guid(5156ba8442da13c4682bc661c9667350) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Plugins/SimpleInput/Scripts/MouseButtonInputs/MouseButtonInputSwipeGesture.cs using Guid(5156ba8442da13c4682bc661c9667350) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8251336bdb387d71f88bf8d9a90fb0e6') in 0.0146869 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e51981ac0eb46bee9cafec0c716dc122 DependenciesID=b48ce790aa9b58bf86d11df963914340 StaticDependenciesID=869613d1c3a126b930f3b1795bea5a6e 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Zenjex/Reflex/Injectors/Source-Generator/Reflex.Generator.Injector.dll
+  importAddress: Guid(b099134124dc10143a0b7c8c789dff6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Injectors/Source-Generator/Reflex.Generator.Injector.dll using Guid(b099134124dc10143a0b7c8c789dff6a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '17c16e7035ced1c8b0f7ec0a327528b0') in 0.0186756 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6147e973b1092aeb231cf87eec1134da DependenciesID=cccb5cfa5873dfe57a9632887dbdf7e0 StaticDependenciesID=dd06c194784e7fe18a9dc34068732a5f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Plugins/SimpleInput/Scripts/MouseButtonInputs/MouseButtonInputKeyboard.cs
+  importAddress: Guid(5409ad7137422ce48b283ed417156c5b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Plugins/SimpleInput/Scripts/MouseButtonInputs/MouseButtonInputKeyboard.cs using Guid(5409ad7137422ce48b283ed417156c5b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5255a165ada801c294b0fa3acf498357') in 0.0147916 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=23998b1acafb9c1516211ec40f48c283 DependenciesID=f4f5ffb86665b63ec16a2ded511f28c2 StaticDependenciesID=62805b6a9ff3dc6f7acae70793eb9c8b 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/DevConsole/Backend/Infrastructure/Services/AssetManagement/Interfaces/IAssetLoader.cs
+  importAddress: Guid(a57b61da444277248b82aad29cdb495f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Backend/Infrastructure/Services/AssetManagement/Interfaces/IAssetLoader.cs using Guid(a57b61da444277248b82aad29cdb495f) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'da8d36a701bf5600cd454f8d74746a05') in 0.0148832 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=083fe306e02945bac9eecae7bd35ca19 DependenciesID=a37d44a96529d4944b31f7e0553156cb StaticDependenciesID=3882aa01163ce471e55ba73987e658d2 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/DevConsole/Backend/Infrastructure/Services/StaticDataService/Subservices/BuildConfigSubservice.cs
+  importAddress: Guid(ab601a28c1df0254f8d606fa4e31b9a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Backend/Infrastructure/Services/StaticDataService/Subservices/BuildConfigSubservice.cs using Guid(ab601a28c1df0254f8d606fa4e31b9a8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '572341ad69b777e87aff73f194f65836') in 0.0137047 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d62f65f192a8da6a2feaddd59281ab69 DependenciesID=52ef8af2e1857bf5e04e389bbe24c9d1 StaticDependenciesID=56128d25dfdc813c9cc5029c02a1ee7c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Zenjex/Reflex/Extensions/MethodInfoExtensions.cs
+  importAddress: Guid(fcfa143dc6767bd47a6d665886d392ae) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Extensions/MethodInfoExtensions.cs using Guid(fcfa143dc6767bd47a6d665886d392ae) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '526bc63241facf7594c54b7a78cce252') in 0.0162996 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9d74964802b1ebafb7d87a293a2deb98 DependenciesID=06808c767465b330ba8895aff441f0aa StaticDependenciesID=728b4e55abde2210b2fd61a7b7a9f438 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Plugins/SimpleInput/Scripts/SimpleInputHelper.cs
+  importAddress: Guid(424a57205c2ff3c47aa53837c12b836b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Plugins/SimpleInput/Scripts/SimpleInputHelper.cs using Guid(424a57205c2ff3c47aa53837c12b836b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8a4e569aad62d51a9753450a77b6acb2') in 0.0164319 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=45b2c47b363a1e4332fc3b9de3f1ab15 DependenciesID=dfe5cd9699906449826d097f6d240a0c StaticDependenciesID=992b98b33ca526b8a2958b3171092810 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Zenjex/Reflex/Editor/DebuggingWindow/ReflexTreeView.cs
+  importAddress: Guid(76b208d53a2447b6ad80ed74cd3e364e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Editor/DebuggingWindow/ReflexTreeView.cs using Guid(76b208d53a2447b6ad80ed74cd3e364e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'b415d2d58d5b59754d16d4ed597a446c') in 0.0141011 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=12068d65bd56a584596deb936d1dda37 DependenciesID=d075815fe8985500557ce52e754303e6 StaticDependenciesID=779fcfe17a7eca8c98c5f54e19ba7b45 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/DevConsole/Backend/Infrastructure/Services/Input/InputService.cs
+  importAddress: Guid(9a73969b0c0ff7b4e969a45c194bc16e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Backend/Infrastructure/Services/Input/InputService.cs using Guid(9a73969b0c0ff7b4e969a45c194bc16e) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '5679d1eef9830cd8db1e935386df64fc') in 0.0159306 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bbda3ea5fdac5f6ed55d88118827a000 DependenciesID=001ae9e758a1437a62b4c2d3a0b1c56b StaticDependenciesID=741fd73a718eb35536aeb2daa56163fb 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/DevConsole/Backend/Infrastructure/Services/DevConsole/Commands/Logs/ToggleUnityLogsCommand.cs
+  importAddress: Guid(796eff727c6f58d4882696250be31d89) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Backend/Infrastructure/Services/DevConsole/Commands/Logs/ToggleUnityLogsCommand.cs using Guid(796eff727c6f58d4882696250be31d89) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a55f7d4353598d6c24e3516579ee9537') in 0.0161186 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3fa337de87576e7a663f4717fc85bdde DependenciesID=73e9ea2b460ca8b6f46ebf1f910a8035 StaticDependenciesID=de9c3d50d66264e1bcd4b3977017f2b8 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/TextMesh Pro/Shaders/TMPro.cginc
+  importAddress: Guid(407bc68d299748449bbf7f48ee690f8d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/TextMesh Pro/Shaders/TMPro.cginc using Guid(407bc68d299748449bbf7f48ee690f8d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'c19c5df312e592364496f5af4264c3a3') in 0.0127572 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f7728ccb171351318f3446832680a5f0 DependenciesID=ddf0e0bb782239c71e88184cf31ab7f6 StaticDependenciesID=5392e794b82f768427ad6b171babacf0 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Zenjex/Reflex/Exceptions/ContractDefinitionException.cs
+  importAddress: Guid(73c47f92c8c94a00b1a507e7347550b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Exceptions/ContractDefinitionException.cs using Guid(73c47f92c8c94a00b1a507e7347550b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd5721d63e108a71657fd9a546229ee93') in 0.0166768 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f6a9db36501d2adf8bc3db18236154de DependenciesID=84beae190653707b261206f99fb2244d StaticDependenciesID=32453c0ed269b5d3255c6628965046ad 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Zenjex/Reflex/Reflectors/IActivatorFactory.cs
+  importAddress: Guid(96c2510e0dd844cbb3d39615cef4ab95) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Reflectors/IActivatorFactory.cs using Guid(96c2510e0dd844cbb3d39615cef4ab95) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '3b7ade30a12fae48039e93a67043761c') in 0.016529 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1b7a21ca49a9324f8c9656c1def34638 DependenciesID=c2579caf8b42591c9231824a1794db86 StaticDependenciesID=21006b03556c9094830be25c191e52d9 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/DevConsole/Backend/Generated/DevConsole_Actions.cs
+  importAddress: Guid(615132bcfca9fed4cbf107b29cb79cca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Backend/Generated/DevConsole_Actions.cs using Guid(615132bcfca9fed4cbf107b29cb79cca) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'd649746573cde12a0d1b797d9d647cb7') in 0.0145505 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=86e53eb295553262ae6c8a58c16ecfdf DependenciesID=f47b5acee98e56a9a38f8a428a2598ab StaticDependenciesID=0ea1a22fe06c0cb0e614a54b2195f386 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/TextMesh Pro/Sprites/EmojiOne.json
+  importAddress: Guid(8f05276190cf498a8153f6cbe761d4e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/TextMesh Pro/Sprites/EmojiOne.json using Guid(8f05276190cf498a8153f6cbe761d4e6) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '87856ba20bb0a76dd903ca5bc33e2681') in 0.0125818 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fb4d82167cb64ee674eb5262a85acfe8 DependenciesID=0a0831002ab3f5683cb9d41d5ed80a84 StaticDependenciesID=dc5ce949a5dc97aa99b774a84fdd9f86 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Zenjex/Reflex/Injectors/UnityInjector.cs
+  importAddress: Guid(0a309dfab721453f9ba6585e93fe48b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Injectors/UnityInjector.cs using Guid(0a309dfab721453f9ba6585e93fe48b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8f04e4c0d02078bbfb309cf2e08f7c09') in 0.0122379 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e24c143d65e9643113210a421362e849 DependenciesID=b2afb2fae03e34feb903f614e8d3ac89 StaticDependenciesID=212bbbcba4a81de979db2c741466690c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Zenjex/Reflex/Logging/ReflexLogger.cs
+  importAddress: Guid(2a8d0dbc654b87b4b94b1fecd05abf2c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Zenjex/Reflex/Logging/ReflexLogger.cs using Guid(2a8d0dbc654b87b4b94b1fecd05abf2c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '6b178728922d43151042b2c4dcaa09ad') in 0.0160867 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=47a5867ffdd0442db5e2088603058a86 DependenciesID=885ec3dd32f717b35efcf530b6daddd8 StaticDependenciesID=f003534c473524c25e08edc5df453a1c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/DevConsole/Frontend/View/ScrollDragHandler.cs
+  importAddress: Guid(80b05d89f91235c4b87b4f246f3af509) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/DevConsole/Frontend/View/ScrollDragHandler.cs using Guid(80b05d89f91235c4b87b4f246f3af509) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'a9981f66abdc693f56ca3e636d82d4d8') in 0.0114391 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f03df2b48f0401c339180d1a181066bc DependenciesID=94fe64c763ab843f36ac517345f4162f StaticDependenciesID=fa2fa053f095bdfa6eb927b587df6d0c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+Assembly Assembly-CSharp-Editor.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp.dll at Library/ScriptAssemblies/Assembly-CSharp.dll not valid. Loading of assembly skipped.
+Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
+Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
+Assembly Unity.InputSystem.IntegrationTests.dll at Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Config.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Searcher.EditorTests.dll at Library/ScriptAssemblies/Unity.Searcher.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.ShaderGraph.Editor.Tests.dll at Library/ScriptAssemblies/Unity.ShaderGraph.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.UnifiedRayTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
+Native extension for LinuxStandalone target not found
+Native extension for AppleTV target not found
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Failed to load: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/VisionOSPlayer\x64\UnityEditor.VisionOS.Native.dll
+Native extension for VisionOS target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.834 seconds
+Domain Reload Profiling: 1597ms
+	BeginReloadAssembly (185ms)
+		DisableScriptedObjects (5ms)
+		CreateAndSetChildDomain (57ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (50ms)
+	LoadAllAssembliesAndSetupDomain (484ms)
+		LoadAssemblies (361ms)
+		AnalyzeDomain (185ms)
+			TypeCache.Refresh (7ms)
+			BuildScriptInfoCaches (163ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (835ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (25ms)
+			BeforeProcessingInitializeOnLoad (190ms)
+			ProcessInitializeOnLoadAttributes (331ms)
+			ProcessInitializeOnLoadMethodAttributes (85ms)
+			AfterProcessingInitializeOnLoad (6ms)
+		AwakeInstancesAfterBackupRestoration (20ms)
+Unloading 24 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6450 unused Assets / (5.3 MB). Loaded Objects now: 7320.
+Memory consumption went from 168.9 MB to 163.6 MB.
+Total: 6.515300 ms (FindLiveObjects: 0.513800 ms CreateObjectMapping: 0.318300 ms MarkObjects: 4.072500 ms  DeleteObjects: 1.608500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

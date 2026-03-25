@@ -37,7 +37,7 @@ namespace Zenjex.Extensions.Runner
   {
     // ── Internal state ────────────────────────────────────────────────────────
 
-    private static readonly HashSet<int> _injected = new();
+    private static readonly HashSet<EntityId> _injected = new();
     private static bool _launched;
 
     // ── Debug registry (read by ZenjexDebuggerWindow) ─────────────────────────
@@ -109,7 +109,7 @@ namespace Zenjex.Extensions.Runner
 
     private static void TryInject(MonoBehaviour mb, InjectionPass pass, string sceneName)
     {
-      var id = mb.GetInstanceID();
+      var id = mb.GetEntityId();
       if (_injected.Contains(id)) return;
       if (!ZenjexInjector.HasZenjexMembers(mb.GetType())) return;
 
@@ -167,7 +167,7 @@ namespace Zenjex.Extensions.Runner
     /// </summary>
     public static void MarkInjected(MonoBehaviour mb)
     {
-      var id = mb.GetInstanceID();
+      var id = mb.GetEntityId();
       if (_injected.Contains(id)) return;
 
       _injected.Add(id);
